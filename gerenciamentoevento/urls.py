@@ -18,11 +18,13 @@ from django.urls import path
 from .views import home
 from .views import about
 from .views import promoter
+from .views import register
 
 urlpatterns = [
     
 	path('home/', home,name='page-home'),
 	path('about/', about, name='page-about'),
     path('promoter/', promoter, name='page-promoter'),
+    path('register/',register, name='page-register'),
     path('admin/', admin.site.urls),
 ]
