@@ -20,3 +20,6 @@ class Pessoa(models.Model):
 
 class Aluno(Pessoa):
     instituicao = models.CharField(max_length=50, blank=False)
+
+    def __str__(self):
+        return "APELIDO: " + self.apelido + "/n" + self.email
