@@ -1,0 +1,17 @@
+{% extends 'body.html'%}
+{% load static %}
+{% block title %}Login{% endblock %}
+{% block main%}
+   
+        <div class="col-sm"></div>
+        <div class="col-sm">
+            <h2>Login</h2>
+            <form method="POST">
+                {% csrf_token %}
+                {{form|bootstrap}}
+                <button class="btn btn-info" type="submit">Login</button>
+            </form>
+        </div>
+        <div class="col-sm"></div>
+   
+{% endblock %}

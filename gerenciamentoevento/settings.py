@@ -37,6 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'clientes',
+    'promotor',
+    'home',
 ]
 
 MIDDLEWARE = [
@@ -116,6 +119,13 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/dev/howto/static-files/
+
+
+#PARA LEVAR O USURARIO PARA PAGINA DE LOGIN
+LOGIN_URL = '/login/'
+
+#PARA REDIRECIONAR APÓS LOGIN
+LOGIN_REDIRECT_URL = 'page-home'
 
 STATIC_URL = '/static/'
 
