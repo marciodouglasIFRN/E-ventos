@@ -1,0 +1,174 @@
+{% extends 'base.html'%}
+{% load static %} 
+{% load bootstrap %}
+{% block title %}Resgister{% endblock %}
+{% block main%}
+<div class="mx-5 p-5">
+
+<form action="" method="POST" class="border border-info btn-round p-5">
+	<div class="row">
+		<div class="col-md-9">
+
+			<div class="form-group">
+			   	<div class="group">
+			      	<!--<input type="email" class="border-left " required>-->
+			      	{{form.apelido}}
+                    <span class="highlight"></span>
+			      	<span class="bar"></span>
+			      	<label>Como quer ser chamado</label>
+				</div>
+		  	</div>
+		  <div class="form-row">
+		    <div class="form-group col-md-7">
+		    	<div class="group">
+			      <!--<input type="email" class="border-left" required>-->
+					{{form.email}}
+			      <span class="highlight"></span>
+			      <span class="bar"></span>
+			      <label>Email</label>
+			    </div>
+		    </div>
+		    <div class="form-group col-md-5">
+		      <div class="group">
+			      <!--<input type="email" class="border-left" required>-->
+			      {{form.senha}}
+				  <span class="highlight"></span>
+			      <span class="bar"></span>
+			      <label>Senha</label>
+			    </div>
+		    </div>
+		  </div> 
+		</div>
+		<div id="img" class="col border border-secondary btn-round text-center pt-4">
+			<i class="fas fa-camera text-secondary" style="font-size: 150px;"></i>
+		</div>
+	</div>
+  <div class="form-row">
+    <div class="form-group col-md-4">
+    	<div class="group">
+			<!--<input type="text" class="border-left" required>-->
+	      	{{form.data_nascimento}}
+			<span class="highlight"></span>
+	      	<span class="bar"></span>
+	      	<label>Data de Nascimento</label>
+	    </div>
+    </div>
+    <div class="form-group col-md-4">
+      <div class="group">
+	      <!--<input type="email" class="border-left" required>-->
+		  {{form.sexo}}
+	      <span class="highlight"></span>
+	      <span class="bar"></span>
+	      <label>Sexo</label>
+	    </div>
+    </div>
+    <div class="form-group col-md-4">
+      <div class="group">
+	      <!--<input type="email" class="border-left" required>-->
+		  {{form.cpf}}
+	      <span class="highlight"></span>
+	      <span class="bar"></span>
+	      <label>CPF</label>
+	    </div>
+    </div>
+  </div>
+ <div class="form-row">
+    <div class="form-group col-md-4">
+    	<div class="group">
+	      <!--<input id='telefone' type="text" class="border-left" required>-->
+			{{form.telefone}}
+	      <span class="highlight"></span>
+	      <span class="bar"></span>
+	      <label>Telefone</label>
+	    </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+    	<div class="group">
+	      <!--<input type="text" class="border-left" required>-->
+			{{form.logradouro}}
+	      <span class="highlight"></span>
+	      <span class="bar"></span>
+	      <label>Logradouro</label>
+	    </div>
+    </div>
+    <div class="form-group col-md-2">
+      <div class="group">
+	      <!--<input type="email" class="border-left" required>-->
+		  {{form.numero}}
+	      <span class="highlight"></span>
+	      <span class="bar"></span>
+	      <label>Numero</label>
+	    </div>
+    </div>
+    <div class="form-group col-md-4">
+      <div class="group">
+	      <!--<input type="email" class="border-left" required>-->
+		  {{form.complemento}}
+	      <span class="highlight"></span>
+	      <span class="bar"></span>
+	      <label>Complemento</label>
+	    </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-4">
+    	<div class="group">
+	      <!--<input type="text" class="border-left" required>-->
+			{{form.bairro}}
+	      <span class="highlight"></span>
+	      <span class="bar"></span>
+	      <label>Bairro</label>
+	    </div>
+    </div>
+    <div class="form-group col-md-4">
+      <div class="group">
+	      <!--<input type="email" class="border-left" required>-->
+		  {{form.estado}}
+	      <span class="highlight"></span>
+	      <span class="bar"></span>
+	      <label>Estado</label>
+	    </div>
+		</div>
+		
+		<div class="form-group col-md-4">
+			<div class="group">
+				<!--<input type="email" class="border-left" required>-->
+				{{form.cidade}}
+				<span class="highlight"></span>
+				<span class="bar"></span>
+				<label>Cidade</label>
+			</div>
+		</div>
+		
+	</div>
+	<div class="form-row">
+			
+			<div class="form-group col-12">
+				<div class="group">
+					<!--<input type="email" class="border-left" required>-->
+					{{form.cidade}}
+					<span class="highlight"></span>
+					<span class="bar"></span>
+					<label>Instituição</label>
+				</div>
+			</div>
+			
+		</div>
+	<!--<input id='upload'type="file" name="image" class="d-none">-->
+	<div class="d-none">
+		{{form.foto}}
+	</div>
+	
+  <button type="submit" class="btn btn-color btn-round">Cadastrar</button>
+	
+</form>
+</div>
+<script src="{% static '/node_modules/jquery/dist/jquery.min.js' %}"></script>
+<script type="text/javascript">
+		$('#img').on("click",function(){
+			$('#id_foto').click();
+		});
+</script>
+{% endblock %}

@@ -1,0 +1,140 @@
+{% extends 'base.html'%}
+{% block title %}Resgister{% endblock %}
+{% block main%}
+<div class="mx-5 p-5">
+	
+<form class="border border-info rounded p-5">
+	<div class="row">
+		<div class="col-md-9">
+			
+			<div class="form-group">
+			   	<div class="group">      
+			      	<input type="email" class="border-left " required>
+			      	<span class="highlight"></span>
+			      	<span class="bar"></span>
+			      	<label>Como quer ser chamado</label>
+				</div>
+		  	</div>
+		  <div class="form-row">
+		    <div class="form-group col-md-7">
+		    	<div class="group">      
+			      <input type="email" class="border-left" required>
+			      <span class="highlight"></span>
+			      <span class="bar"></span>
+			      <label>Email</label>
+			    </div>
+		    </div>
+		    <div class="form-group col-md-5">
+		      <div class="group">      
+			      <input type="email" class="border-left" required>
+			      <span class="highlight"></span>
+			      <span class="bar"></span>
+			      <label>Senha</label>
+			    </div>
+		    </div>
+		  </div>
+		</div>
+		<div id='img' class="col bg-secondary text-center">
+		</div>
+	</div>
+  <div class="form-row">
+    <div class="form-group col-md-4">
+    	<div class="group">      
+	      <input type="text" class="border-left" required>
+	      <span class="highlight"></span>
+	      <span class="bar"></span>
+	      <label>Data de Nascimento</label>
+	    </div>
+    </div>
+    <div class="form-group col-md-4">
+      <div class="group">      
+	      <input type="email" class="border-left" required>
+	      <span class="highlight"></span>
+	      <span class="bar"></span>
+	      <label>Sexo</label>
+	    </div>
+    </div>
+    <div class="form-group col-md-4">
+      <div class="group">      
+	      <input type="email" class="border-left" required>
+	      <span class="highlight"></span>
+	      <span class="bar"></span>
+	      <label>CPF</label>
+	    </div>
+    </div>
+  </div>
+ <div class="form-row">
+    <div class="form-group col-md-4">
+    	<div class="group">      
+	      <input id='telefone' type="text" class="border-left" required>
+	      <span class="highlight"></span>
+	      <span class="bar"></span>
+	      <label>Telefone</label>
+	    </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-4">
+    	<div class="group">      
+	      <input type="text" class="border-left" required>
+	      <span class="highlight"></span>
+	      <span class="bar"></span>
+	      <label>Logradouro</label>
+	    </div>
+    </div>
+    <div class="form-group col-md-4">
+      <div class="group">      
+	      <input type="email" class="border-left" required>
+	      <span class="highlight"></span>
+	      <span class="bar"></span>
+	      <label>Numero</label>
+	    </div>
+    </div>
+    <div class="form-group col-md-4">
+      <div class="group">      
+	      <input type="email" class="border-left" required>
+	      <span class="highlight"></span>
+	      <span class="bar"></span>
+	      <label>Complemento</label>
+	    </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-4">
+    	<div class="group">      
+	      <input type="text" class="border-left" required>
+	      <span class="highlight"></span>
+	      <span class="bar"></span>
+	      <label>Bairro</label>
+	    </div>
+    </div>
+    <div class="form-group col-md-4">
+      <div class="group">      
+	      <input type="email" class="border-left" required>
+	      <span class="highlight"></span>
+	      <span class="bar"></span>
+	      <label>Estado</label>
+	    </div>
+    </div>
+    <div class="form-group col-md-4">
+      <div class="group">      
+	      <input type="email" class="border-left" required>
+	      <span class="highlight"></span>
+	      <span class="bar"></span>
+	      <label>Cidade</label>
+	    </div>
+    </div>
+  </div>
+	<input id='upload'type="file" name="image" class="d-none">
+  <button type="submit" class="btn btn-primary">Cadastrar</button>
+</form>
+</div>
+<script type="text/javascript">
+	$('#img').on("click",function(){
+		$('#upload').click();
+	});
+	$(document).ready(function(){
+		$('#telefone').mask('(99) 99999-9999');
+	});
+</script>
+{% endblock %}
