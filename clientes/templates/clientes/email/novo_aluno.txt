@@ -1,0 +1,2 @@
+Seu email com endereço {{email}} foi cadastro no Site E-vento.
+Para terminar o seu cadastro, clique nesse link:

@@ -4,7 +4,7 @@
 {% block title %}Ativar Conta{% endblock %}
 {% block main%}
 <div class="mx-5 p-5">
-
+    <h2 class="text-center ">CADASTRO DE PROMOTOR</h2>
 <form method="POST" enctype="multipart/form-data" class="border border-info btn-round p-5">
 	{%csrf_token%}
 	<div class="row">
@@ -159,16 +159,6 @@
 	</div>
 	<div class="form-row">
 
-			<div class="form-group col-12">
-				<div class="group">
-					<!--<input type="email" class="border-left" required>-->
-					{{form.instituicao}}
-					<!--<input type="text" name="instituicao" maxlength="50" id="id_instituicao" class="border-left" value="{{form.instituicao.value}}" required>-->
-					<span class="highlight"></span>
-					<span class="bar"></span>
-					<label for="id_instituicao">Instituição</label>
-				</div>
-			</div>
 			<!--<div class="form-group col-12">-->
 				<!--<div class="group">-->
 					<!--&lt;!&ndash;<input type="email" class="border-left" required>&ndash;&gt;-->
@@ -200,4 +190,4 @@
 			$('#id_foto').click();
 		});
 </script>
-{% endblock %}
+{% endblock %}f

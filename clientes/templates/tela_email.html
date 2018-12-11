@@ -1,0 +1,16 @@
+{% extends 'base.html'%}
+{% load static %}
+{% load bootstrap %}
+{% block title %}Resgister{% endblock %}
+{% block main%}
+<div class="mx-5 p-5">
+    <form action="{% url 'cadastrar_email_aluno'%}" method="POST">
+        {%csrf_token%}
+        <!--{{form.email}}-->
+        <input type="text" name="email" id="id_email">
+        <button type="submit">Enviar</button>
+    </form>
+</div>
+
+
+{% endblock %}
