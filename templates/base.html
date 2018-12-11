@@ -1,4 +1,4 @@
-{% load static %} 
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +8,7 @@
 	<link rel="stylesheet" type="text/css" href="{% static '/css/color.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static '/css/chape.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static '/css/position.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static '/css/stickfooter.css' %}">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
 </head>
 <body>
@@ -19,9 +20,11 @@
 		    	<input class="form-control col-12 btn-round" type="search" placeholder="Pesquisa..." aria-label="Search">
 		  	</form>
 		  	<div class="row">
-		  		<i class="fas fa-user-circle text-light mr-2" style="font-size: 40px;"></i>
-		  		<button class="btn btn-outline-light btn-round mr-2 my-sm-0" type="submit">Login</button>
-		  		<button class="btn btn-outline-light btn-round mr-2 my-sm-0" data-toggle="modal" data-target="#modal-cadastro"type="submit">Cadastre-se</button>
+
+				<i class="fas fa-user-circle text-light mr-2" style="font-size: 40px;"></i>
+				<button class="btn btn-outline-light btn-round mr-2 my-sm-0" type="submit">Login</button>
+		  		<!--<button class="btn btn-outline-light btn-round mr-2 my-sm-0" data-toggle="modal" data-target="#modal-cadastro"type="submit">Cadastre-se</button>-->
+				<a href="{% url 'tela_email_teste'%}"><button class="btn btn-outline-light btn-round mr-2 my-sm-0" data-toggle="modal" data-target="#modal-cadastro"type="submit">Cadastre-se</button></a>
 		  	</div>
 		</nav>
 	<div class="container">
@@ -39,11 +42,13 @@
 	        </button>
 	      </div>
 	      <div class="modal-body text-center">
-	        <form>
-	          <div class="form-group m-5">
-	          	<div class="group">      
-			      <input type="email" required>
-			      <span class="highlight"></span>
+	        <form action="{% url 'cadastrar_nova_pessoa' %}" >
+	          <!--{%csrf_token%}-->
+				<div class="form-group m-5">
+	          	<div class="group">
+			      <input id="id_email" type="text" name="email" maxlength="50" required>
+			      <!--{{form.email}}-->
+					<span class="highlight"></span>
 			      <span class="bar"></span>
 			      <label>Email</label>
 			    </div>
@@ -57,5 +62,10 @@
 	<script src="{% static '/node_modules/jquery/dist/jquery.slim.min.js' %}"></script>
 	<script src="{% static '/node_modules/bootstrap/dist/js/bootstrap.min.js' %}"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+	<footer class="footer">
+		<div class="container">
+			<span class="text-muted">Desenvolvimento web com Django 2.x</span>
+		</div>
+	</footer>
 </body>
 </html>

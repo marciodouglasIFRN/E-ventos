@@ -1,12 +1,12 @@
 from django.forms import ModelForm
-from .models import Aluno
+from .models import PromotorEventos
 
 
-class AlunoForm(ModelForm):
+class PromoterEventoForm(ModelForm):
     class Meta(object):
-        model = Aluno
+        model = PromotorEventos
         fields = ['apelido', 'email', 'senha',
                   'data_nascimento', 'sexo', 'cpf',
                   'telefone','logradouro', 'numero',
                   'complemento','bairro','estado','cidade',
-                  'foto','instituicao','token','status']
+                  'foto','token','status']
