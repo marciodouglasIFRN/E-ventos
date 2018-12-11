@@ -8,4 +8,5 @@ def promoter(request):
 def qrcode(request):
 	url = pyqrcode.create('https://github.com/marciodouglasIFRN/E-ventos')
 	url.png('statics/imgs/code.png', scale=8)
+	# bola
 	return render(request,'qrcode.html')
