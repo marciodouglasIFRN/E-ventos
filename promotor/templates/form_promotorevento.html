@@ -1,188 +1,178 @@
 {% extends 'base.html'%}
 {% load static %}
 {% load bootstrap %}
-{% block title %}Ativar Conta{% endblock %}
+{% block title %}Cadastro de Promotor{% endblock %}
 {% block main%}
 <div class="mx-5 p-5">
-    <h2 class="text-center ">CADASTRO DE PROMOTOR</h2>
-<form method="POST" enctype="multipart/form-data" class="border border-info btn-round p-5">
-	{%csrf_token%}
-	<div class="row">
-		<div class="col-md-9">
-
-			<div class="form-group">
-			   	<div class="group">
-			      	<!--<input type="text" id="id_apelido" maxlength="20" name="apelido" class="border-left" value="{{form.apelido.value}}" required>-->
-			      	{{form.apelido}}
-                    <span class="highlight"></span>
-			      	<span class="bar"></span>
-			      	<label for="id_apelido">Como quer ser chamado</label>
+	<h2 class="text-center ">CADASTRO DE PROMOTOR</h2>
+	<form method="POST" enctype="multipart/form-data" class="border border-info btn-round p-5">
+		{%csrf_token%}
+		<div class="row">
+			<div class="col-md-9">
+				<div class="form-row">
+					<div class="form-group col-md-7">
+						<div class="group">
+							<!--<input type="email" class="border-left" required>-->
+							<!--<input type="text" id="id_email" maxlength="50" name="email" class="border-left" value="{{form.email.value}}" required>-->
+							{{form.email}}
+							<span class="highlight"></span>
+							<span class="bar"></span>
+							<label for="id_email">Email</label>
+						</div>
+					</div>
+					<div class="form-group col-md-5">
+						<div class="group">
+							<!--<input type="email" class="border-left" required>-->
+							{{form.senha}}
+							<!--<input type="text" id="id_senha" name="senha" maxlength="12" class="border-left " value="{{form.senha.value}}" required>-->
+							<span class="highlight"></span>
+							<span class="bar"></span>
+							<label for="id_senha">Senha</label>
+						</div>
+					</div>
 				</div>
-		  	</div>
-		  <div class="form-row">
-		    <div class="form-group col-md-7">
-		    	<div class="group">
-			      <!--<input type="email" class="border-left" required>-->
-					<!--<input type="text" id="id_email" maxlength="50" name="email" class="border-left" value="{{form.email.value}}" required>-->
-					{{form.email}}
-			      <span class="highlight"></span>
-			      <span class="bar"></span>
-			      <label for="id_email">Email</label>
-			    </div>
-		    </div>
-		    <div class="form-group col-md-5">
-		      <div class="group">
-			      <!--<input type="email" class="border-left" required>-->
-			      {{form.senha}}
-				  <!--<input type="text" id="id_senha" name="senha" maxlength="12" class="border-left " value="{{form.senha.value}}" required>-->
-				  <span class="highlight"></span>
-			      <span class="bar"></span>
-			      <label for="id_senha">Senha</label>
-			    </div>
-		    </div>
-		  </div>
-		</div>
-		<div id="img" class="col border border-secondary btn-round text-center pt-4">
-			<i class="fas fa-camera text-secondary" style="font-size: 150px;"></i>
-			<!--{{form.foto}}-->
-		</div>
-	</div>
-  <div class="form-row">
-    <div class="form-group col-md-4">
-    	<div class="group">
-			<!--<input type="text" class="border-left" required>-->
-	      	<!--<input type="text" name="data_nascimento" id="id_data_nascimento" class="border-left" value="{{form.data_nascimento.value}}" required >-->
-			{{form.data_nascimento}}
-			<span class="highlight"></span>
-	      	<span class="bar"></span>
-	      	<label for="id_data_nascimento">Data de Nascimento</label>
-	    </div>
-    </div>
-    <div class="form-group col-md-4">
-      <div class="group">
-	      <!--<input type="email" class="border-left" required>-->
-		  {{form.sexo}}
-		  <!--<input type="text" name="sexo" maxlength="1" id="id_sexo" class="border-left" value="{{form.sexo.value}}" required>-->
-	      <span class="highlight"></span>
-	      <span class="bar"></span>
-	      <label for="id_sexo">Sexo</label>
-	    </div>
-    </div>
-    <div class="form-group col-md-4">
-      <div class="group">
-	      <!--<input type="email" class="border-left" required>-->
-		  <!--<input type="text" name="cpf" maxlength="15" id="id_cpf" class="border-left" value="{{form.cpf.value}}" required>-->
-		  {{form.cpf}}
-	      <span class="highlight"></span>
-	      <span class="bar"></span>
-	      <label for="id_cpf">CPF</label>
-	    </div>
-    </div>
-  </div>
- <div class="form-row">
-    <div class="form-group col-md-4">
-    	<div class="group">
-	      <!--<input id='telefone' type="text" class="border-left" required>-->
-			{{form.telefone}}
-			<!--<input type="text" name="telefone" maxlength="15" id="id_telefone" class="border-left" value="{{form.telefone.value}}" required>-->
-	      <span class="highlight"></span>
-	      <span class="bar"></span>
-	      <label for="id_telefone">Telefone</label>
-	    </div>
-    </div>
-  </div>
-  <div class="form-row">
-    <div class="form-group col-md-6">
-    	<div class="group">
-	      <!--<input type="text" class="border-left" required>-->
-			{{form.logradouro}}
-			<!--<input type="text" name="logradouro" maxlength="50" id="id_logradouro" class="border-left" value="{{form.logradouro.value}}" required>-->
-	      <span class="highlight"></span>
-	      <span class="bar"></span>
-	      <label for="id_logradouro">Logradouro</label>
-	    </div>
-    </div>
-    <div class="form-group col-md-2">
-      <div class="group">
-	      <!--<input type="email" class="border-left" required>-->
-		  {{form.numero}}
-		  <!--<input type="text" name="numero" maxlength="4" id="id_numero" class="border-left" value="{{form.numero.value}}" required>-->
-	      <span class="highlight"></span>
-	      <span class="bar"></span>
-	      <label for="id_numero">Numero</label>
-	    </div>
-    </div>
-    <div class="form-group col-md-4">
-      <div class="group">
-	      <!--<input type="email" class="border-left" required>-->
-		  {{form.complemento}}
-		  <!--<input type="text" name="complemento" maxlength="50" id="id_complemento" class="border-left" value="{{form.complemento.value}}" required>-->
-	      <span class="highlight"></span>
-	      <span class="bar"></span>
-	      <label for="id_complemento">Complemento</label>
-	    </div>
-    </div>
-  </div>
-  <div class="form-row">
-    <div class="form-group col-md-4">
-    	<div class="group">
-	      <!--<input type="text" class="border-left" required>-->
-			{{form.bairro}}
-			<!--<input type="text" name="bairro" maxlength="50" id="id_bairro" class="border-left" value="{{form.bairro.value}}" required>-->
-	      <span class="highlight"></span>
-	      <span class="bar"></span>
-	      <label for="id_bairro">Bairro</label>
-	    </div>
-    </div>
-    <div class="form-group col-md-4">
-      <div class="group">
-	      <!--<input type="email" class="border-left" required>-->
-		  {{form.estado}}
-		  <!--<input type="text" name="estado" maxlength="2" id="id_estado" class="border-left" value="{{form.estado.value}}" required>-->
-	      <span class="highlight"></span>
-	      <span class="bar"></span>
-	      <label for="id_estado">Estado</label>
-	    </div>
-		</div>
-
-		<div class="form-group col-md-4">
-			<div class="group">
-				<!--<input type="email" class="border-left" required>-->
-				{{form.cidade}}
-				<!--<input type="text" name="cidade" maxlength="50" id="id_cidade" class="border-left" value="{{form.cidade.value}}" required>-->
-				<span class="highlight"></span>
-				<span class="bar"></span>
-				<label for="id_cidade">Cidade</label>
+			</div>
+			<div id="img" class="col border border-secondary btn-round text-center pt-4">
+				<i class="fas fa-camera text-secondary" style="font-size: 150px;"></i>
+				<!--{{form.foto}}-->
 			</div>
 		</div>
+		<div class="form-row">
+			<div class="form-group col-md-4">
+				<div class="group">
+					<!--<input type="text" class="border-left" required>-->
+					<!--<input type="text" name="data_nascimento" id="id_data_nascimento" class="border-left" value="{{form.data_nascimento.value}}" required >-->
+					{{form.data_nascimento}}
+					<span class="highlight"></span>
+					<span class="bar"></span>
+					<label for="id_data_nascimento">Data de Nascimento</label>
+				</div>
+			</div>
+			<div class="form-group col-md-4">
+				<div class="group">
+					<!--<input type="email" class="border-left" required>-->
+					{{form.sexo}}
+					<!--<input type="text" name="sexo" maxlength="1" id="id_sexo" class="border-left" value="{{form.sexo.value}}" required>-->
+					<span class="highlight"></span>
+					<span class="bar"></span>
+					<label for="id_sexo">Sexo</label>
+				</div>
+			</div>
+			<div class="form-group col-md-4">
+				<div class="group">
+					<!--<input type="email" class="border-left" required>-->
+					<!--<input type="text" name="cpf" maxlength="15" id="id_cpf" class="border-left" value="{{form.cpf.value}}" required>-->
+					{{form.cpf}}
+					<span class="highlight"></span>
+					<span class="bar"></span>
+					<label for="id_cpf">CPF</label>
+				</div>
+			</div>
+		</div>
+		<div class="form-row">
+			<div class="form-group col-md-4">
+				<div class="group">
+					<!--<input id='telefone' type="text" class="border-left" required>-->
+					{{form.telefone}}
+					<!--<input type="text" name="telefone" maxlength="15" id="id_telefone" class="border-left" value="{{form.telefone.value}}" required>-->
+					<span class="highlight"></span>
+					<span class="bar"></span>
+					<label for="id_telefone">Telefone</label>
+				</div>
+			</div>
+		</div>
+		<div class="form-row">
+			<div class="form-group col-md-6">
+				<div class="group">
+					<!--<input type="text" class="border-left" required>-->
+					{{form.logradouro}}
+					<!--<input type="text" name="logradouro" maxlength="50" id="id_logradouro" class="border-left" value="{{form.logradouro.value}}" required>-->
+					<span class="highlight"></span>
+					<span class="bar"></span>
+					<label for="id_logradouro">Logradouro</label>
+				</div>
+			</div>
+			<div class="form-group col-md-2">
+				<div class="group">
+					<!--<input type="email" class="border-left" required>-->
+					{{form.numero}}
+					<!--<input type="text" name="numero" maxlength="4" id="id_numero" class="border-left" value="{{form.numero.value}}" required>-->
+					<span class="highlight"></span>
+					<span class="bar"></span>
+					<label for="id_numero">Numero</label>
+				</div>
+			</div>
+			<div class="form-group col-md-4">
+				<div class="group">
+					<!--<input type="email" class="border-left" required>-->
+					{{form.complemento}}
+					<!--<input type="text" name="complemento" maxlength="50" id="id_complemento" class="border-left" value="{{form.complemento.value}}" required>-->
+					<span class="highlight"></span>
+					<span class="bar"></span>
+					<label for="id_complemento">Complemento</label>
+				</div>
+			</div>
+		</div>
+		<div class="form-row">
+			<div class="form-group col-md-4">
+				<div class="group">
+					<!--<input type="text" class="border-left" required>-->
+					{{form.bairro}}
+					<!--<input type="text" name="bairro" maxlength="50" id="id_bairro" class="border-left" value="{{form.bairro.value}}" required>-->
+					<span class="highlight"></span>
+					<span class="bar"></span>
+					<label for="id_bairro">Bairro</label>
+				</div>
+			</div>
+			<div class="form-group col-md-4">
+				<div class="group">
+					<!--<input type="email" class="border-left" required>-->
+					{{form.estado}}
+					<!--<input type="text" name="estado" maxlength="2" id="id_estado" class="border-left" value="{{form.estado.value}}" required>-->
+					<span class="highlight"></span>
+					<span class="bar"></span>
+					<label for="id_estado">Estado</label>
+				</div>
+			</div>
 
-	</div>
-	<div class="form-row">
+			<div class="form-group col-md-4">
+				<div class="group">
+					<!--<input type="email" class="border-left" required>-->
+					{{form.cidade}}
+					<!--<input type="text" name="cidade" maxlength="50" id="id_cidade" class="border-left" value="{{form.cidade.value}}" required>-->
+					<span class="highlight"></span>
+					<span class="bar"></span>
+					<label for="id_cidade">Cidade</label>
+				</div>
+			</div>
+
+		</div>
+		<div class="form-row">
 
 			<!--<div class="form-group col-12">-->
-				<!--<div class="group">-->
-					<!--&lt;!&ndash;<input type="email" class="border-left" required>&ndash;&gt;-->
-					<!--&lt;!&ndash;<input type="text" name="token" id="id_token" value="{{form.token.value}}" disabled>&ndash;&gt;-->
-					<!--&lt;!&ndash;{{form.token}}&ndash;&gt;-->
-					<!--<span class="highlight"></span>-->
-					<!--<span class="bar"></span>-->
-					<!--<label></label>-->
-				<!--</div>-->
+			<!--<div class="group">-->
+			<!--&lt;!&ndash;<input type="email" class="border-left" required>&ndash;&gt;-->
+			<!--&lt;!&ndash;<input type="text" name="token" id="id_token" value="{{form.token.value}}" disabled>&ndash;&gt;-->
+			<!--&lt;!&ndash;{{form.token}}&ndash;&gt;-->
+			<!--<span class="highlight"></span>-->
+			<!--<span class="bar"></span>-->
+			<!--<label></label>-->
+			<!--</div>-->
 			<!--</div>-->
 			<input type="hidden" id="id_token" name="token" value="{{form.token.value}}">
 			<input type="hidden" id="id_status" name="status" value="True">
-					<!--<input type="email" class="border-left" required>-->
+			<!--<input type="email" class="border-left" required>-->
 
 		</div>
-	<!--<input type="hidden" name="token" id="id_token" value="{{form.token}}">-->
-	<!--<input id='upload'type="file" name="image" class="d-none">-->
-	<div class="d-none">
-		<!--<input id="id_foto" type="file" accept="image/*" name="foto" class="d-none" value="{{form.foto.value}}" required>-->
-	</div>
+		<!--<input type="hidden" name="token" id="id_token" value="{{form.token}}">-->
+		<!--<input id='upload'type="file" name="image" class="d-none">-->
+		<div class="d-none">
+			<!--<input id="id_foto" type="file" accept="image/*" name="foto" class="d-none" value="{{form.foto.value}}" required>-->
+		</div>
 
-  <button type="submit" class="btn btn-color btn-round">Cadastrar</button>
+		<button type="submit" class="btn btn-color btn-round">Cadastrar</button>
 
-</form>
+	</form>
 </div>
 <script src="{% static '/node_modules/jquery/dist/jquery.min.js' %}"></script>
 <script type="text/javascript">

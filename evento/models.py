@@ -1,4 +1,6 @@
 from django.db import models
+from django.urls import reverse
+
 from promotor.models import PromotorEventos
 
 # Create your models here.
@@ -6,7 +8,7 @@ from promotor.models import PromotorEventos
 class Ingresso():
     pass
 class Evento(models.Model):
-    promotores = models.ManyToManyField(PromotorEventos, null=False, blank=False)
+    promotores = models.ManyToManyField(PromotorEventos, null=True, blank=True)
     nomeDaAtracao = models.CharField(max_length=50, null=False, blank=False)
     descricao = models.TextField(null=False, blank=False)
     data = models.DateTimeField(null=False, blank=False)
@@ -18,3 +20,10 @@ class Evento(models.Model):
     estado = models.CharField(max_length=2, blank=False)
     complemento = models.CharField(max_length=50, blank=False)
     quantidaIngresso = models.CharField(max_length=4)
+
+
+    def __str__(self):
+        return "Evento " + self.nomeDaAtracao
+
+    def get_absolute_url(self):
+        return reverse('list_evento')

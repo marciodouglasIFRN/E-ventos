@@ -2,71 +2,103 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>{% block title%}{% endblock %}</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="{% static '/css/animation.css' %}">
-	<link rel="stylesheet" type="text/css" href="{% static '/css/color.css' %}">
-	<link rel="stylesheet" type="text/css" href="{% static '/css/chape.css' %}">
-	<link rel="stylesheet" type="text/css" href="{% static '/css/position.css' %}">
-	<link rel="stylesheet" type="text/css" href="{% static '/css/stickfooter.css' %}">
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+    <title>{% block title%}{% endblock %}</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <!--<link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/bootstrap.min.css' %}">-->
+    <link rel="stylesheet" type="text/css" href="{% static '/css/animation.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/css/color.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/css/chape.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/css/estilo_paginacao.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/css/position.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static '/css/stickfooter.css' %}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
 </head>
 <body>
-	<nav class="navbar navbar-color sticky-top navbar-light ">
-			<a class="navbar-brand text-light" href="{% url 'page-home' %}">
-			    <img src="{% static '/imgs/logo.png'%}" width="150" height="60" class="d-inline-block align-top" alt="">
-				</a>
-				<a class="text-dark" href="{% url 'page-qrcode' %}">QRcode</a>
-		  	<form class="form-inline col-5">
-		    	<input class="form-control col-12 btn-round" type="search" placeholder="Pesquisa..." aria-label="Search">
-		  	</form>
-		  	<div class="row">
+<nav class="navbar navbar-color sticky-top navbar-light ">
+    <a class="navbar-brand text-light" href="{% url 'page-home' %}">
+        <img src="{% static '/imgs/logo.png'%}" width="150" height="60" class="d-inline-block align-top" alt="">
+    </a>
 
-				<i class="fas fa-user-circle text-light mr-2" style="font-size: 40px;"></i>
-				<button class="btn btn-outline-light btn-round mr-2 my-sm-0" type="submit">Login</button>
-		  		<!--<button class="btn btn-outline-light btn-round mr-2 my-sm-0" data-toggle="modal" data-target="#modal-cadastro"type="submit">Cadastre-se</button>-->
-				<a href="{% url 'tela_email_teste'%}"><button class="btn btn-outline-light btn-round mr-2 my-sm-0" data-toggle="modal" data-target="#modal-cadastro"type="submit">Cadastre-se</button></a>
-		  	</div>
-		</nav>
-	<div class="container">
-		{% block main%}
-		{% endblock %}
-	</div>
-	<!-- Modal -->
-	<div class="modal fade " id="modal-cadastro" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	  <div class="modal-dialog " role="document">
-	    <div class="modal-content ">
-	      <div class="modal-header text-center  ">
-	        <h5 class="modal-title" id="exampleModalLabel">Cadastre-se</h5>
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-	          <span aria-hidden="true">&times;</span>
-	        </button>
-	      </div>
-	      <div class="modal-body text-center">
-	        <form action="{% url 'cadastrar_nova_pessoa' %}" >
-	          <!--{%csrf_token%}-->
-				<div class="form-group m-5">
-	          	<div class="group">
-			      <input id="id_email" type="text" name="email" maxlength="50" required>
-			      <!--{{form.email}}-->
-					<span class="highlight"></span>
-			      <span class="bar"></span>
-			      <label>Email</label>
-			    </div>
-	          </div>
-	          <button type="submit" class="btn btn-round btn-color m-3 pl-5 pr-5" data-dismiss="modal">Enviar</button>
-	        </form>
-	      </div>
-	    </div>
-	  </div>
-	</div>
-	<script src="{% static '/node_modules/jquery/dist/jquery.slim.min.js' %}"></script>
-	<script src="{% static '/node_modules/bootstrap/dist/js/bootstrap.min.js' %}"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-	<footer class="footer">
-		<div class="container">
-			<span class="text-muted">Desenvolvimento web com Django 2.x</span>
-		</div>
-	</footer>
+    <form class="form-inline col-5">
+        <input class="form-control col-12 btn-round" type="search" placeholder="Pesquisa..." aria-label="Search">
+    </form>
+    <div class="row">
+
+        <i class="fas fa-user-circle text-light mr-2" style="font-size: 40px;"></i>
+        {% if user.username %}
+        <div class="dropdown show">
+            <a class="btn btn-secondary dropdown-toggle btn-round" href="#" role="button" id="dropdownMenuLink"
+               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{user.username}}
+            </a>
+
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                {% if user.pessoa.aluno %}
+                <a class="dropdown-item" href="{% url 'edit_aluno' user.pessoa.aluno.pk %}">Perfil</a>
+                <a class="dropdown-item" href="#">Minhas Solicitações</a>
+                {% else %}
+                <a class="dropdown-item" href="{% url 'edit_aluno' user.pessoa.promotoreventos.pk %}">Perfil</a>
+                <a class="dropdown-item" href="{% url 'create_evento' %}">Novo Evento</a>
+                <a class="dropdown-item" href="#">Meus Eventos</a>
+                {% endif %}
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{% url 'logout'%}">Logout</a>
+            </div>
+        </div>
+        <!--ANTES DE COLOCAR O CODIGO DO BOTÃO DROPDOW, ERA O CODIGO A BAIXO -->
+        <!--<button class="btn btn-outline-light btn-round mr-2 my-sm-0" >{{user.username}}</button>-->
+        <!--<a class="btn btn-danger btn-round mr-2 my-sm-0 text-light" href="{% url 'logout'%}">Sair</a>-->
+        {% else %}
+        <a class="btn btn-outline-light btn-round mr-2 my-sm-0" href="{% url 'login'%}">Login</a>
+        <a class="btn btn-outline-light btn-round mr-2 my-sm-0 text-light"
+           href="{% url 'create_aluno'%}">Cadastre-se</a>
+        {% endif %}
+        <!--<button class="btn btn-outline-light btn-round mr-2 my-sm-0" data-toggle="modal" data-target="#modal-cadastro"type="submit">Cadastre-se</button>-->
+
+
+    </div>
+</nav>
+<div class="container">
+    {% block main%}
+    {% endblock %}
+</div>
+<!-- Modal -->
+<div class="modal fade " id="modal-cadastro" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog " role="document">
+        <div class="modal-content ">
+            <div class="modal-header text-center  ">
+                <h5 class="modal-title" id="exampleModalLabel">Cadastre-se</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-center">
+                <form action="">
+                    <!--{%csrf_token%}-->
+                    <div class="form-group m-5">
+                        <div class="group">
+                            <input id="id_email" type="text" name="email" maxlength="50" required>
+                            <!--{{form.email}}-->
+                            <span class="highlight"></span>
+                            <span class="bar"></span>
+                            <label>Email</label>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-round btn-color m-3 pl-5 pr-5" data-dismiss="modal">Enviar
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="{% static '/node_modules/jquery/dist/jquery.slim.min.js' %}"></script>
+<script src="{% static '/node_modules/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<footer class="footer">
+    <div class="container">
+        <span class="text-muted">Desenvolvimento web com Django 2.x</span>
+    </div>
+</footer>
 </body>
 </html>

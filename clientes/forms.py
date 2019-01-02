@@ -5,8 +5,8 @@ from .models import Aluno
 class AlunoForm(ModelForm):
     class Meta(object):
         model = Aluno
-        fields = ['apelido', 'email', 'senha',
+        fields = ['nome', 'sobrenome', 'email', 'matricula',
                   'data_nascimento', 'sexo', 'cpf',
-                  'telefone','logradouro', 'numero',
-                  'complemento','bairro','estado','cidade',
-                  'foto','instituicao','token','status']
+                  'telefone','rua', 'numero','bairro',
+                  'cidade','estado','foto','token',
+                  'status']

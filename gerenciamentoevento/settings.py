@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'clientes',
     'promotor',
     'home',
+    'evento',
 
 ]
 
@@ -128,11 +129,13 @@ USE_TZ = True
 
 
 #PARA LEVAR O USURARIO PARA PAGINA DE LOGIN
-LOGIN_URL = '/login/'
-
+# LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = 'page-about'
 #PARA REDIRECIONAR APÓS LOGIN
-LOGIN_REDIRECT_URL = 'page-home'
+# LOGIN_REDIRECT_URL = 'page-about'
 
+#PARA REDIRECIONAR APÓS LOGOUT
+LOGOUT_REDIRECT_URL = 'page-home'
 STATIC_URL = '/static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
@@ -140,6 +143,12 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 STATICFILES_DIRS = [
     'statics',
 ]
+
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+
 
 #EMAIL_USE_TLS = False
 EMAIL_USE_TLS = True

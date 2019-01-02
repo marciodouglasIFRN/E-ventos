@@ -12,7 +12,11 @@
 		<h4 class="font-weight-bold">GAROTA VIP</h4>
 		<a class="text-dark" href="{% url 'page-promoter' %}"><h4 class="font-weight-bold">KAIO PONTES</h4></a>
 		<div class="footer text-center" style="width: 90%">
-			<button class="btn btn-color btn-round solicitar">SOLICITAR</button>
+			{% if usuario.username %}
+				<button class="btn btn-color btn-round solicitar">SOLICITAR</button>
+			{% else %}
+				<a class="btn btn-color btn-round solicitar" href="{% url 'create_aluno'%}">SOLICITAR</a>
+			{% endif %}
 		</div>
 	</div>
 </div>

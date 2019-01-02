@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+
+from gerenciamentoevento import settings
 from home import urls as home_urls
 from clientes import urls as clientes_urls
 from promotor import urls as promoter_urls
@@ -26,9 +28,11 @@ urlpatterns = [
 
     # path('home/', home,name='page-home'),
     path('', include(home_urls)),
-    path('clientes/', include(clientes_urls)),
-    path('promoter/', include(promoter_urls)),
-    path('register/', register, name='page-register'),
-    path('login/', auth_views.LoginView.as_view(), name='login'),
+    path('clientes/', include('clientes.urls')),
+    path('promoter/', include('promotor.urls')),
+    path('evento/', include('evento.urls')),
+    # path('register/', register, name='page-register'),
+    # path('login/', auth_views.LoginView.as_view(), name='login'),
     path('admin/', admin.site.urls),
-]
+    path('accounts/', include('django.contrib.auth.urls')),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

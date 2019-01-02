@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load bootstrap %}
+{% block main %}
+<div class="mx-5 p-5">
+	<form method="POST" enctype="multipart/form-data" class="border border-info btn-round p-5">
+		{%csrf_token%}
+		<h1 class="text-center">Cadastre-se no E-VENTOS</h1>
+		<div class="row">
+			<div class="col-3"></div>
+			<div class="col-6">
+				<div class="form-group">
+					<div class="group">
+					  <!--<input type="email" class="border-left" required>-->
+						<!--<input type="text" id="id_email" maxlength="50" name="email" class="border-left" value="{{form.email.value}}" required>-->
+						{{form.email}}
+					  <span class="highlight"></span>
+					  <span class="bar"></span>
+					  <label for="id_email">Email</label>
+					</div>
+					<div class="group">
+					  <!--<input type="email" class="border-left" required>-->
+						<!--<input type="text" id="id_email" maxlength="50" name="email" class="border-left" value="{{form.email.value}}" required>-->
+						{{form.matricula}}
+					  <span class="highlight"></span>
+					  <span class="bar"></span>
+					  <label for="id_matricula">Matricula</label>
+					</div>
+
+					<button type="submit" class="btn btn-color btn-round">Cadastrar</button>
+
+				</div>
+				<div class="col-3"></div>
+			</div>
+
+		</div>
+	</form>
+</div>
+
+{% endblock %}
