@@ -3,13 +3,21 @@
 {%load bootstrap%}
 {% block title %}Login{% endblock %}
 {% block main%}
-   
-
-            <h2>Login</h2>
-            <form method="POST">
-                {% csrf_token %}
-                {{form|bootstrap}}
-                <button class="btn btn-info" type="submit">Login</button>
-            </form>
-
+<div class="box">
+    <h2>Login</h2>
+    <form method="POST">
+            {% csrf_token %}
+        <div class="inputBox">
+            <input type="text" name="username" required id="id_username">
+            <label>E-mail</label>
+        </div>
+        <div class="inputBox">
+            <input type="password" name="password" required id="id_password">
+            <label>Senha</label>
+        </div>
+        <input type="submit" name="" value="Entrar">
+        <br>
+        <a href="#">Esqueceu Sua Senha</a>
+    </form>
+</div>
 {% endblock %}
