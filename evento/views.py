@@ -2,7 +2,9 @@ from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth.mixins import PermissionRequiredMixin, LoginRequiredMixin
 from django.http import HttpResponse
 from django.shortcuts import render
-from django.views.generic import ListView, CreateView, DetailView
+from django.views.generic import ListView, CreateView, DetailView, UpdateView
+
+from .form import EventoFormUpdate
 from .models import Evento
 from promotor.models import PromotorEventos
 
@@ -57,3 +59,12 @@ class Detalhar_Evento(DetailView):
 
     def get_queryset(self):
         return Evento.objects.filter(pk=self.kwargs['pk'])
+
+
+class Atualizar_Evento(UpdateView):
+    model = Evento
+    form_class = EventoFormUpdate
+    # fields = ['promotores', 'nomeDaAtracao', 'descricao',
+    #           'data', 'foto', 'cidade', 'rua', 'bairro', 'numero',
+    #           'estado', 'complemento', 'quantidaIngresso']
+    template_name_suffix = '_update_form'

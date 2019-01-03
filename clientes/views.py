@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 # from .forms import AlunoForm
 from django.views.generic import CreateView, ListView, UpdateView
 
+from clientes.form import FormAlunoUpdate
 from .models import Aluno
 from django.contrib.auth.models import User
 
@@ -27,10 +28,11 @@ class AlunoNovo(CreateView):
 
 class AlunoEdit(LoginRequiredMixin, UpdateView):
     model = Aluno
-    fields = ['nome', 'sobrenome', 'matricula',
-              'data_nascimento', 'sexo', 'cpf', 'telefone',
-              'rua', 'numero', 'bairro', 'cidade', 'estado',
-              'foto', 'instituicao']
+    form_class = FormAlunoUpdate
+    # fields = ['nome', 'sobrenome', 'matricula',
+    #           'data_nascimento', 'sexo', 'cpf', 'telefone',
+    #           'rua', 'numero', 'bairro', 'cidade', 'estado',
+    #           'foto', 'instituicao']
     # template_name_field = '_update_form'
     template_name_suffix = '_update_form'
 
