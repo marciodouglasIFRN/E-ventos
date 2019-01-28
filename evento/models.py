@@ -1,12 +1,11 @@
 from django.db import models
 from django.urls import reverse
 
+from clientes.models import Aluno
 from promotor.models import PromotorEventos
 
 # Create your models here.
 
-class Ingresso():
-    pass
 class Evento(models.Model):
     promotores = models.ManyToManyField(PromotorEventos, null=True, blank=True)
     nomeDaAtracao = models.CharField(max_length=50, null=False, blank=False)

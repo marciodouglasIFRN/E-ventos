@@ -31,6 +31,7 @@ urlpatterns = [
     path('clientes/', include('clientes.urls')),
     path('promoter/', include('promotor.urls')),
     path('evento/', include('evento.urls')),
+    path('ingresso/', include('ingresso.urls')),
     # path('register/', register, name='page-register'),
     # path('login/', auth_views.LoginView.as_view(), name='login'),
     path('admin/', admin.site.urls),

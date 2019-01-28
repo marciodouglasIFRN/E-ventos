@@ -1,12 +1,14 @@
 from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth.mixins import PermissionRequiredMixin, LoginRequiredMixin
-from django.http import HttpResponse
+from django.http import HttpResponse, response
 from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render, redirect
 from django.views.generic import ListView, CreateView, DetailView, UpdateView
 
+from promotor.models import PromotorEventos
 from .form import EventoFormUpdate
 from .models import Evento
-from promotor.models import PromotorEventos
+
 
 
 # from evento import models
@@ -44,10 +46,15 @@ class Lista_Evento(ListView):
     def get_queryset(self):
         return Evento.objects.all()
 
+def listar_Eventos_Por_Promotor_funcao(request, id_promotor):
+    evento = get_object_or_404(Evento, promotores=id_promotor)
+    promotor = get_object_or_404(PromotorEventos, pk=id_promotor)
+    return render(request, 'tempates/listar_eventos_por_promotor_funcao.html',{'formEvento': evento, 'formPromotor':promotor})
 
 class Listar_Eventos_Por_Promotor(ListView):
     model = Evento
     paginate_by = 2
+
     def get_queryset(self):
         return Evento.objects.filter(promotores=self.kwargs['pk'])
 
@@ -68,3 +75,5 @@ class Atualizar_Evento(UpdateView):
     #           'data', 'foto', 'cidade', 'rua', 'bairro', 'numero',
     #           'estado', 'complemento', 'quantidaIngresso']
     template_name_suffix = '_update_form'
+
+

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap %}
+
+{% block main %}
+    <div class="container mt-3">
+        {% for evento in object_list %}
+            <div class="media border p-3">
+                {%if evento.foto %}
+                    <img src="{{MEDIA_URL}}{{evento.foto.url}}" alt="aa" class="mr-3 mt-3 rounded-circle" style="width:60px">
+                {% else %}
+                    <img src="{{MEDIA_URL}}/media/eventos_photos/semfoto.jpeg" alt="aa" class="mr-3 mt-3 rounded-circle" style="width:60px">
+                {% endif %}
+                <div class="media-body">
+                    <a href="{% url 'detalhar_evento' evento.pk %}"><h4>{{ evento.nomeDaAtracao }} <small><i>Dia: {{evento.data}} </i></small></h4></a>
+                    <p>{{evento.descricao}}</p>
+                    {% if evento.promotores.all.count > 0 %}
+                        <p>Promotor: <a href="{% url 'list_evento_promotor' evento.promotores.all.get.id %}">{{evento.promotores.all.get.nome}} </a></p>
+                    {% else %}
+                        <a>Falso</a>
+                    {% endif %}
+                </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}

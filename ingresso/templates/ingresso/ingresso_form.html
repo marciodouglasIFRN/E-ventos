@@ -1,0 +1,14 @@
+{% extends 'base.html'%}
+
+{% load bootstrap %}
+
+{% block main %}
+<br>
+<form method="POST">
+    {%csrf_token%}
+    <p>Evento: {{form}}</p>
+    <input type="hidden" name="aluno" id="id_aluno" value="{{user.pessoa.aluno.pk}}">
+    <!--{{form|bootstrap}}-->
+    <button type="submit">Confirmar</button>
+</form>
+{% endblock %}

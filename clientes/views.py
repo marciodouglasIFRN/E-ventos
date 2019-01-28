@@ -21,7 +21,7 @@ class AlunoNovo(CreateView):
         # username = aluno.nome.split(' ')[0] + aluno.nome.split(' ')[1]
         username = aluno.email
         # aluno.user = User.objects.create_user(username=username, password='ifrn2018')
-        aluno.user = User.objects.create_user(email=username, password='ifrn2018')
+        aluno.user = User.objects.create_user(username=username, password='ifrn2018')
         aluno.save()
         return super(AlunoNovo, self).form_valid(form)
 
@@ -35,6 +35,13 @@ class AlunoEdit(LoginRequiredMixin, UpdateView):
     #           'foto', 'instituicao']
     # template_name_field = '_update_form'
     template_name_suffix = '_update_form'
+
+
+class AtivarConta(UpdateView):
+    model = Aluno
+    form_class = FormAlunoUpdate
+    def get_queryset(self):
+        return Aluno.objects.filter(pk=self.kwargs['pk'])
 
 # def cadastrar_new_aluno(request):
 # 	form = AlunoForm(request.POST or None, request.FILES or None)
@@ -56,15 +63,15 @@ class AlunoEdit(LoginRequiredMixin, UpdateView):
 # 	form = AlunoForm(request.GET or None)
 # 	return render(request,'form_Aluno.html',{'form':form})
 #
-# # def ativar_conta(request, id, token, email):
+# def ativar_conta(request, id, token, email):
 # def ativar_conta(request, token):
-# 	# aluno = get_object_or_404(Aluno, pk=id, email=email,token=token)
-# 	aluno = get_object_or_404(Aluno, token=token)
-# 	form = AlunoForm(request.POST or None, request.FILES or None, instance=aluno)
-# 	if form.is_valid():
-# 		form.save()
-# 		user = User.objects.create_user(aluno.apelido, aluno.apelido, aluno.senha)
-# 		user = user
-# 		user.save()
-# 		return redirect('page-home')
-# 	return render(request, 'form_Aluno.html', {'form':form })
+	# aluno = get_object_or_404(Aluno, pk=id, email=email,token=token)
+	# aluno = get_object_or_404(Aluno, token=token)
+	# form = AlunoForm(request.POST or None, request.FILES or None, instance=aluno)
+	# if form.is_valid():
+	# 	form.save()
+	# 	user = User.objects.create_user(aluno.apelido, aluno.apelido, aluno.senha)
+	# 	user = user
+	# 	user.save()
+	# 	return redirect('page-home')
+	# return render(request, 'form_Aluno.html', {'form':form })

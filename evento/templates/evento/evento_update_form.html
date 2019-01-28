@@ -1,0 +1,131 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap %}
+
+{% block main %}
+<div class="mx-5 p-5">
+	<h1 class="text-center">Atualizar Dados do EVENTO</h1>
+	<form method="POST" enctype="multipart/form-data" class="border border-info btn-round p-5">
+		{%csrf_token%}
+		<div class="row">
+			<div class="col-md-12">
+				<div class="form-row">
+					<input type="hidden" name="promotores" id="id_promotores" value="{{user.pessoa.pk}}">
+					<div class="form-group col-md-12">
+						<div class="group">
+							{{form.nomeDaAtracao}}
+							<span class="highlight"></span>
+							<span class="bar"></span>
+							<label for="id_nomeDaAtracao">Nome da Atração</label>
+						</div>
+					</div>
+				</div>
+				<!--FINAL DA PRIMEIRA LINHA DO FOMULÁRIO-->
+			</div>
+			<div class="col-md-12">
+				<div class="form-row">
+					<div class="form-group col-md-4">
+						<div class="group">
+							{{form.cidade}}
+							<span class="highlight"></span>
+							<span class="bar"></span>
+							<label for="id_cidade">Cidade</label>
+						</div>
+					</div>
+					<div class="form-group col-md-4">
+						<div class="group">
+							{{form.rua}}
+							<span class="highlight"></span>
+							<span class="bar"></span>
+							<label for="id_rua">Rua</label>
+						</div>
+					</div>
+					<div class="form-group col-md-4">
+						<div class="group">
+							{{form.bairro}}
+							<span class="highlight"></span>
+							<span class="bar"></span>
+							<label for="id_bairro">Bairro</label>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--FIM DA SEGUNDA LINHA-->
+			<div class="col-md-12">
+				<div class="form-row">
+					<div class="form-group col-md-4">
+						<div class="group">
+							{{form.numero}}
+							<span class="highlight"></span>
+							<span class="bar"></span>
+							<label for="id_numero">Número</label>
+						</div>
+					</div>
+					<div class="form-group col-md-4">
+						<div class="group">
+							{{form.estado}}
+							<span class="highlight"></span>
+							<span class="bar"></span>
+							<label for="id_estado">Estado</label>
+						</div>
+					</div>
+					<div class="form-group col-md-4">
+						<div class="group">
+							{{form.complemento}}
+							<span class="highlight"></span>
+							<span class="bar"></span>
+							<label for="id_complemento">Complemento</label>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--FIM DA TERCEIRA LINHA-->
+			<div class="col-md-12">
+				<div class="form-row">
+					<div class="form-group col-md-4">
+						<div class="group">
+							{{form.data}}
+							<span class="highlight"></span>
+							<span class="bar"></span>
+							<label for="id_data">Data e Hora</label>
+						</div>
+					</div>
+					<div class="form-group col-md-4">
+						<div class="group">
+							{{form.quantidaIngresso}}
+							<span class="highlight"></span>
+							<span class="bar"></span>
+							<label for="id_quantidaIngresso">Qt de Ingresso</label>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--FIM DA QUARTA LINHA-->
+			<div class="col-md-10">
+				<div class="form-row">
+                    <div class="form-group col-md-10">
+						<div class="group">
+                            {{form.foto}}
+							<span class="highlight"></span>
+							<span class="bar"></span>
+							<label for="id_foto">Foto:</label>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-12">
+				<div class="form-row">
+                    <div class="form-group col-md-12">
+						<div class="group">
+							<p>Descição</p>
+							{{form.descricao}}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<button type="submit" class="btn btn-color btn-round">Cadastrar</button>
+	</form>
+</div>
+
+{% endblock %}

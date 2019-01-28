@@ -37,7 +37,7 @@ class Aluno(Pessoa):
 
     def save(self, *args, **kwargs):
         super(Aluno, self).save(*args, **kwargs)
-        data = {'nome': self.nome, 'email': self.email, 'token': token}
+        data = {'pk': self.pk, 'nome': self.nome, 'email': self.email, 'token': token}
         plain_text = render_to_string('clientes/email/novo_aluno.txt', data)
         html_email = render_to_string('clientes/email/novo_aluno.html', data)
         if self.status==False:
@@ -50,6 +50,7 @@ class Aluno(Pessoa):
                 html_message=html_email,
                 fail_silently=False,
             )
+
         # if self.status==False:
         #     send_mail(
         #         'Novo Cliente Cadastrado',

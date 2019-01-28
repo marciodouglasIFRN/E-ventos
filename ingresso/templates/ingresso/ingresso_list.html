@@ -1,0 +1,22 @@
+{% extends 'base.html'%}
+
+{% block main %}
+
+<h1>Minhas Solicitações</h1>
+<ul>
+{% for ingresso in object_list %}
+        <li>
+            <p>Numero do ingresso:{{ ingresso.pk}}  </p>
+            <a class="btn btn-success" href="{% url 'gerar_ingresso'  ingresso.pk %}">Download do Ingresso</a>
+           
+            <p>Atração:{{ ingresso.evento.all.get.nomeDaAtracao }}</p>
+            <p>Dia:{{ ingresso.evento.all.get.data|date:"SHORT_DATE_FORMAT"}}</p>
+            <p>Hora:{{ ingresso.evento.all.get.data|time:"H:i"}}</p>
+            <a class="btn btn-danger" href="{% url 'cancelar_solicitacao' ingresso.pk ingresso.evento.all.get.pk %}">Cancelar Solicitação</a>
+        </li>
+        {{ingresso.aluno.all.get.pk}}
+        <br>
+    {% endfor %}
+</ul>
+<a class="btn btn-info" href="{% url 'page-home'%}">Voltar</a>
+{% endblock%}

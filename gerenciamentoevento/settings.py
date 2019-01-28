@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'promotor',
     'home',
     'evento',
-
+    'ingresso',
 ]
 
 MIDDLEWARE = [
@@ -130,7 +130,7 @@ USE_TZ = True
 
 #PARA LEVAR O USURARIO PARA PAGINA DE LOGIN
 # LOGIN_URL = '/login/'
-LOGIN_REDIRECT_URL = 'page-about'
+LOGIN_REDIRECT_URL = 'page-home'
 #PARA REDIRECIONAR APÓS LOGIN
 # LOGIN_REDIRECT_URL = 'page-about'
 

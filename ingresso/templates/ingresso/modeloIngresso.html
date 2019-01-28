@@ -1,0 +1,68 @@
+<html >
+<head>
+<title>CSS</title>
+<meta charset="UTF-8">
+<style>
+#tudo {
+	width: 800px;
+	height: 600px;
+	
+}
+#tudo1 {
+	position:relative;
+	width: 300px;
+	height: 250px;
+	
+	float: left;
+	
+}
+#tudo2 {
+	position: relative;
+	width: 400px;
+	height: 250px;
+    
+	float: left;
+}
+
+.centralizarImagem { 
+    display:         flex;
+    display: -webkit-flex; /* Garante compatibilidade com navegador Safari. */
+
+    justify-content: center;
+    align-items: center;
+}
+p.sansserif {
+  font-family: Arial, Helvetica, sans-serif;
+}
+h1{
+	text-align: center;
+}
+</style>
+</head>
+<body>
+	
+	<div id="tudo">
+		<h1>Sistema G-EVENTOS</h1>
+		<div id="tudo1" class="" style="text-align: center">
+			<img src="{{ingresso.caminho}}" style="width:150px;height: 150px"/>
+		</div>
+		<div id="tudo2" style="text-align: center">
+           
+			<p class="sansserif">Nº ingresso: {{ingresso.pk}}</p>
+            <p class="sansserif">Atração: {{ingresso.evento.all.get.nomeDaAtracao}}</p>
+            <!--TEM QUE COLOCAR NO MODEL DE EVENTO A DATA E HORA SEPARADO
+            POIS DO JEITO QUE ESTAR, ELE TA FAZENDO EM UM CAMPO SÓ,
+        TEM QUE COLOCAR UM CAMPO PARA DATA E OUTRO PARA HORA-->
+			<p class="sansserif">Dia: {{ingresso.evento.all.get.data|date:'I'}}</p>
+			<p class="sansserif">Data e Hora:{{ingresso.evento.all.get.data|date:"SHORT_DATE_FORMAT"}} 
+                    {{ingresso.evento.all.get.data|time:"H:i"}}
+            </p>
+			<p class="sansserif">Local: {{ingresso.evento.all.get.rua}}, {{ingresso.evento.all.get.numero}}, 
+                    {{ingresso.evento.all.get.cidade}}, {{ingresso.evento.all.get.bairro}}, 
+                    {{ingresso.evento.all.get.cidade}}/{{ingresso.evento.all.get.estado}}
+            </p>
+		</div>
+	</div>
+
+</body>
+</html>

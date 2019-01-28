@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap %}
+
+{% block main %}
+<h3 class="text-center">Eventos do Promotor {{formPromotor.nome}}
+    {{object_list.1.promotores.all.get.sobrenome}}</h3>
+<!--<div class="container mt-3">-->
+<!--{% for evento in object_list %}-->
+<!--<div class="media border p-3">-->
+<!--<img src="media/{{evento.foto}}" alt="aa" class="mr-3 mt-3 rounded-circle" style="width:60px">-->
+<!--<div class="media-body">-->
+<!--<h4>{{ evento.nomeDaAtracao }}-->
+<!--<small><i>Dia: {{evento.data}} </i></small>-->
+<!--</h4>-->
+<!--<p>{{evento.descricao}}</p>-->
+<!--<p>Promotor: {{evento.promotores.all.get.nome}} {{evento.promotores.all.get.id}}</p>-->
+<!--</div>-->
+<!--</div>-->
+<!--{% endfor %}-->
+<!--</div>-->
+<div class="row my-5">
+    <div class="col-8">
+        <div>
+            <h1>Promotor {{object_list.1.promotores.all.get.nome}}</h1>
+
+        </div>
+        <ul class="list-group">
+            {% for evento in object_list %}
+            
+            <a class="badge-light " href="{% url 'detalhar_evento' evento.pk %}">
+                <li class="list-group-item rounded border border-info m-1">
+                    <img src="http://localhost/Atividades/staticfiles/imgs/img1.png" class="img-thumbnail"
+                         width="100px">
+                    <h4>{{ evento.nomeDaAtracao }}
+                        <small><i>Dia: {{evento.data}} </i></small>
+                    </h4>
+                    <p>{{evento.descricao}}</p>
+                    <p>Promotor: {{evento.promotores.all.get.nome}}</p>
+                </li>
+            </a>
+            {% endfor %}
+        </ul>
+    </div>    
+    <p>{{object_list.all.promotores}}</p>
+    {% for promo in object_list %}
+    
+        <div class="col border d-promoter border-info pl-5">
+            <div class="row text-center mt-4">
+                <i class="fas fa-user-circle mr-2" style="font-size: 40px;"></i>
+                <h2>{{promo.promotores.all.get.nome}} {{promo.promotores.all.get.sobrenome}}</h2>
+            </div>
+            
+            <div class=" mt-4">
+                <h3>ENDEREÇO</h3>
+                <p>{{promo.promotores.all.get.rua}},
+                    {{promo.promotores.all.get.numero}},
+                    {{promo.promotores.all.get.bairro}},
+                    {{promo.promotores.all.get.cidade}}/{{promo.promotores.all.get.estado}}</p>
+            </div>
+            <div class="mt-4">
+                <h3>Email</h3>
+                <p>{{promo.promotores.all.get.email}}</p>
+            </div>
+            <div class=" mt-4">
+                <h3>Telefone</h3>
+                <p>{{promo.promotores.all.get.telefone}}</p>
+            </div>
+        </div>
+        
+    {% endfor%}
+    {% if is_paginated %}
+<div class="mypagination">
+    {% if page_obj.has_previous %}
+    <a href="?page={{ page_obj.previous_page_number }}">&laquo;</a>
+    {% else %}
+    <a class="disabled"><span>&laquo;</span></a>
+    {% endif %}
+    {% for i in paginator.page_range %}
+    {% if page_obj.number == i %}
+    <a class="active">{{ i }}</a>
+    {% else %}
+    <a href="?page={{ i }}">{{ i }}</a>
+    {% endif %}
+    {% endfor %}
+    {% if page_obj.has_next %}
+    <a href="?page={{ page_obj.next_page_number }}">&raquo;</a>
+    {% else %}
+    <a class="disabled"><span>&raquo;</span></a>
+    {% endif %}
+</div>
+{% endif %}
+</div>
+
+
+
+
+{% endblock %}

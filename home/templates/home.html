@@ -1,4 +1,4 @@
-{% extends 'base.html'%}
+{% extends "base.html"%}
 {%load static%}
 {% block title %}Home{% endblock %}
 {% block main%}
@@ -13,25 +13,28 @@
 
     <div class="carousel-item active">
       <a href="{% url 'page-about' %}">
-      	<img src="{% static '/imgs/img.png' %}" class="d-block w-100" alt="Fist slide">
+      	<!--<img src="{% static '/imgs/img.png' %}" class="d-block w-100" alt="Fist slide">-->
+      	<img src="{{MEDIA_URL}}{{formEvento.1.foto.url}}" style="width:1100px; height:419px" alt="Fist slide">
       </a>
     </div>
+      {% for evento in formEvento %}
     <div class="carousel-item">
-    	<a href="{% url 'page-about' %}">
-        <img class="d-block w-100"  src="{% static 'imgs/img.png' %}" alt="Fist slide">
+    	<a href="{% url 'detalhar_evento' evento.pk %}">
+        <!--<img class="d-block w-100"  src="{% static 'imgs/img.png' %}" alt="Fist slide">-->
+        <img src="{{MEDIA_URL}}{{evento.foto.url}}" alt="..." style="width:1100px; height:419px">
       </a>
     </div>
-    <div class="carousel-item">
-      <a href="{% url 'page-about' %}">
-        <img class="d-block w-100" src="{% static 'imgs/img.png' %}" alt="Fist slide">
-      </a>
-    </div>
-    <div class="carousel-item">
-      <a href="{% url 'page-about' %}">
-        <img class="d-block w-100" src="{% static 'imgs/img.png' %}" alt="Fist slide">
-      </a>
-    </div>
-    
+    <!--<div class="carousel-item">-->
+      <!--<a href="{% url 'page-about' %}">-->
+        <!--<img class="d-block w-100" src="{% static 'imgs/img.png' %}" alt="Fist slide">-->
+      <!--</a>-->
+    <!--</div>-->
+    <!--<div class="carousel-item">-->
+      <!--<a href="{% url 'page-about' %}">-->
+        <!--<img class="d-block w-100" src="{% static 'imgs/img.png' %}" alt="Fist slide">-->
+      <!--</a>-->
+    <!--</div>-->
+    {%endfor%}
   </div>
   <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -57,46 +60,34 @@
     </div>
 </div>
 <div class="row text-center">
+    {% for evento in formEvento %}
     <div class="col mx-1 mb-3 text-white">
       <a href="{% url 'page-about' %}">
-        <img src="{% static 'imgs/img1.png' %}" alt="..." class="grow img-thumbnail">
+        <!--<img src="{% static 'imgs/img1.png' %}" alt="..." class="grow img-thumbnail">-->
+          <img src="{{MEDIA_URL}}{{evento.foto.url}}" alt="..." class="grow img-thumbnail" style="width:247px; height:135px">
       </a>
     </div>
-    <div class="col mx-1 mb-3 text-white">
-      <a href="{% url 'page-about' %}">
-        <img src="{% static 'imgs/img1.png' %}" alt="..." class="grow img-thumbnail">
-      </a>
-    </div>
-    <div class="col mx-1 mb-3 text-white">
-      <a href="{% url 'page-about' %}">
-        <img src="{% static 'imgs/img1.png' %}" alt="..." class="grow img-thumbnail">
-      </a>
-    </div>
-    <div class="col mx-1 mb-5 text-white">
-      <a href="{% url 'page-about' %}">
-        <img src="{% static 'imgs/img1.png' %}" alt="..." class="grow img-thumbnail">
-      </a>
-    </div>
+    {% endfor %}
 </div>
 <div class="row text-center">
     <div class="col mx-1 mb-5 text-white">
       <a href="{% url 'page-about' %}">
-        <img src="{% static 'imgs/img1.png' %}" alt="..." class="grow img-thumbnail">
+
       </a>
     </div>
     <div class="col mx-1 mb-3 text-white">
       <a href="{% url 'page-about' %}">
-        <img src="{% static 'imgs/img1.png' %}" alt="..." class="grow img-thumbnail">
+        <!--<img src="{% static 'imgs/img1.png' %}" alt="..." class="grow img-thumbnail">-->
       </a>
     </div>
     <div class="col mx-1 mb-3 text-white">
       <a href="{% url 'page-about' %}">
-        <img src="{% static 'imgs/img1.png' %}" alt="..." class="grow img-thumbnail">
+        <!--<img src="{% static 'imgs/img1.png' %}" alt="..." class="grow img-thumbnail">-->
       </a>
     </div> 
      <div class="col mx-1 mb-3 text-white">
       <a href="{% url 'page-about' %}">
-        <img src="{% static 'imgs/img1.png' %}" alt="..." class="grow img-thumbnail">
+        <!--<img src="{% static 'imgs/img1.png' %}" alt="..." class="grow img-thumbnail">-->
       </a>
     </div>
 </div>

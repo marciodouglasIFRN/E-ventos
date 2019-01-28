@@ -1,0 +1,14 @@
+{%extends 'base.html'%}
+    
+    
+
+    {%block main%}
+    <h1>Tem certeza que deseja cancelar sua solicitação </h1>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+		<button type="submit" class="btn btn-danger">Delete</button>
+		<a href="{% url 'minhas_solicitacoes'%}" class="btn btn-info">Voltar</a>
+    </form>
+
+    {%endblock%}

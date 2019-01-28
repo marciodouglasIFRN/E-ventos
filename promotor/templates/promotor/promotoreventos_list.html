@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load bootstrap %}
+
+{% block main %}
+    <h2>Promotores Cadastrados</h2>
+    <ul>
+    {% for promotor in object_list %}
+        <li>
+            {{ promotor.nome}} {{promotor.sobrenome}}
+        </li>
+    {% endfor %}
+    </ul>
+
+{% endblock %}

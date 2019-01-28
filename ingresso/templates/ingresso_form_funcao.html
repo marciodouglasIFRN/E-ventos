@@ -1,0 +1,13 @@
+{% extends 'base.html'%}
+
+{% block main %}
+<form method="POST">
+    {%csrf_token%}
+    <h1>Deseja solicitar um ingresso para o evento: {{formEvento.nomeDaAtracao.value}}</h1>
+    <h2>Para o usuário:{{user.pessoa.aluno.nome}}</h2>
+    <input type="hidden" name="aluno" id="id_aluno" value="{{user.pessoa.aluno.pk}}" required>
+    <input type="hidden" name="evento" id="id_evento" value="{{chaveForm}}" required>
+    <button type="submit">Gravar</button>
+</form>
+
+{% endblock%}

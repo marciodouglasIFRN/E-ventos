@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap %}
+
+{% block main %}
+<div class="row mt-4">
+	<div class="col ">
+		<!--<img src="{% static '/imgs/img1.png' %}" class="img-thumbnail">-->
+		<img src="{{MEDIA_URL}}{{object.foto.url}}" class="img-thumbnail" >
+	</div>
+	<div class="col-4">
+		<h5 class="font-weight-bold">{{object.data|date:'M'}}</h5>
+		<h5 class="font-weight-bold">{{object.data|date:'d'}}</h5>
+		<h4 class="font-weight-bold">{{object.nomeDaAtracao}}</h4>
+		<a class="text-dark" href="{% url 'list_evento_promotor' object.promotores.all.get.pk %}"><h4 class="font-weight-bold">{{object.promotores.all.get.nome}}</h4></a>
+		<div class="footer text-center" style="width: 90%">
+			{% if not user.pessoa %}
+				<a href="{% url 'create_aluno'%}" class="btn btn-color btn-round solicitar">SOLICITAR</a>
+			{% else %}
+				<a class="btn btn-color btn-round solicitar" href="{% url 'solicitar_ingresso_funcao' object.pk %}">SOLICITAR</a>
+			{% endif %}
+		</div>
+	</div>
+</div>
+<div class="row mt-5">
+	<div class="col">
+		<h5>DESCRIÇAO:</h5>
+		{{object.descricao}}
+	</div>
+	<div class="col-4 ">
+		<h5 class="font-weight-bold">DATA E HORA</h5>
+		<p>{{object.data|date:"SHORT_DATE_FORMAT"}}</p>
+		<p>{{object.data|time:"H:i"}}</p>
+		<h4 class="font-weight-bold">Localizaçao</h4>
+		<p>{{object.rua}}, {{object.bairro}}, {{object.numero}},
+        {{object.cidade}}/{{object.estado}}</p>
+        <p>{{object.complemento}}</p>
+	</div>
+</div>
+{% endblock %}

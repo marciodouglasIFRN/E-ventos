@@ -6,10 +6,13 @@ from django.http import HttpResponse
 # Create your views here.
 from django.views import View
 
+from evento.models import Evento
+
 
 class MyHome(View):
 	def get(self, request, *args, **kwargs):
-		return render(request, 'home.html')
+		evento = Evento.objects.all()
+		return render(request, 'home.html', {'formEvento':evento})
 
 # def home(request):
 #
