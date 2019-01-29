@@ -5,6 +5,7 @@ from django.shortcuts import render
 from django.shortcuts import get_object_or_404, render, redirect
 from django.views.generic import ListView, CreateView, DetailView, UpdateView
 
+from evento.form import EventoFormCreate
 from promotor.models import PromotorEventos
 from .form import EventoFormUpdate
 from .models import Evento
@@ -28,9 +29,10 @@ class Cria_Evento(LoginRequiredMixin, CreateView):
         return super(Cria_Evento, self).dispatch(request, *args, **kwargs)
 
     model = Evento
-    fields = ['promotores', 'nomeDaAtracao', 'descricao', 'data', 'foto',
-              'cidade', 'rua', 'bairro', 'numero', 'estado', 'complemento',
-              'quantidaIngresso']
+    form_class = EventoFormCreate
+    # fields = ['promotores', 'nomeDaAtracao', 'descricao', 'data', 'hora_evento', 'foto',
+    #           'cidade', 'rua', 'bairro', 'numero', 'estado', 'complemento',
+    #           'quantidaIngresso']
 
     # def form_valid(self, form):
     #     evento = form.save(commit=False)
@@ -68,7 +70,17 @@ class Detalhar_Evento(DetailView):
         return Evento.objects.filter(pk=self.kwargs['pk'])
 
 
-class Atualizar_Evento(UpdateView):
+class Atualizar_Evento(LoginRequiredMixin, UpdateView):
+    #COLOCAR A CONDIÇÃO DE PROMOTOR SÓ PODER ALTERAR O SEU
+
+    def dispatch(self, request, *args, **kwargs):
+        evento = get_object_or_404(Evento, pk=kwargs['pk'])
+        if not request.user.has_perm('evento.change_evento'):
+            # return HttpResponse("Acesso Negado, VOCÊ PRECISA DE PERMISSÃO")
+            return render(request, "evento/sempermissao.html")
+
+        return super(Cria_Evento, self).dispatch(request, *args, **kwargs)
+
     model = Evento
     form_class = EventoFormUpdate
     # fields = ['promotores', 'nomeDaAtracao', 'descricao',

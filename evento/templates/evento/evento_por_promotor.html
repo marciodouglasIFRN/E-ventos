@@ -22,14 +22,14 @@
 <div class="row my-5">
     <div class="col-8">
         <div>
-            <h1>Promotor {{object_list.1.promotores.all.get.nome}}</h1>
+            <h1>Promotor {{object_list.0.promotores.all.get.nome}}</h1>
 
         </div>
         <ul class="list-group">
             {% for evento in object_list %}
             <a class="badge-light " href="{% url 'detalhar_evento' evento.pk %}">
                 <li class="list-group-item rounded border border-info m-1">
-                    <img src="http://localhost/Atividades/staticfiles/imgs/img1.png" class="img-thumbnail"
+                    <img src="{{MEDIA_URL}}{{evento.foto.url}}" class="img-thumbnail"
                          width="100px">
                     <h4>{{ evento.nomeDaAtracao }}
                         <small><i>Dia: {{evento.data}} </i></small>

@@ -5,7 +5,7 @@ from django.views.generic import CreateView, ListView, UpdateView
 
 from clientes.form import FormAlunoUpdate
 from .models import Aluno
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 
 
 class AlunoNovo(CreateView):
@@ -22,6 +22,8 @@ class AlunoNovo(CreateView):
         username = aluno.email
         # aluno.user = User.objects.create_user(username=username, password='ifrn2018')
         aluno.user = User.objects.create_user(username=username, password='ifrn2018')
+        gp = Group.objects.get(name='aluno')
+        gp.user_set.add(aluno.user)
         aluno.save()
         return super(AlunoNovo, self).form_valid(form)
 

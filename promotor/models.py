@@ -6,4 +6,4 @@ from clientes import models
 class PromotorEventos(models.Pessoa):
 
     def __str__(self):
-        return "Promotor: " + self.nome
+        return "Promotor: " + self.email

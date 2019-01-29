@@ -40,7 +40,7 @@ class Aluno(Pessoa):
         data = {'pk': self.pk, 'nome': self.nome, 'email': self.email, 'token': token}
         plain_text = render_to_string('clientes/email/novo_aluno.txt', data)
         html_email = render_to_string('clientes/email/novo_aluno.html', data)
-        if self.status==False:
+        if not self.status:
             send_mail(
                 'Novo Cliente Cadastrado',
                 #'O seu pre-cadastro %s foi realizado' % self.first_name,

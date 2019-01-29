@@ -5,7 +5,7 @@ from .models import Evento
 class EventoFormUpdate(ModelForm):
     class Meta:
         model = Evento
-        fields = ['promotores', 'nomeDaAtracao', 'descricao',
+        fields = ['promotores', 'nomeDaAtracao', 'descricao','hora_evento',
                   'data', 'foto', 'cidade', 'rua', 'bairro', 'numero',
                   'estado', 'complemento', 'quantidaIngresso']
 
@@ -16,6 +16,13 @@ class EventoFormUpdate(ModelForm):
 class EventoForm(ModelForm):
     class Meta:
         model = Evento
-        fields = ['nomeDaAtracao', 'descricao',
+        fields = ['nomeDaAtracao', 'descricao','hora_evento',
                   'data', 'foto', 'cidade', 'rua', 'bairro', 'numero',
                   'estado', 'complemento', 'quantidaIngresso']
+
+class EventoFormCreate(ModelForm):
+    class Meta:
+        model = Evento
+        fields = ['promotores', 'nomeDaAtracao', 'descricao', 'data', 'hora_evento', 'foto',
+                  'cidade', 'rua', 'bairro', 'numero', 'estado', 'complemento',
+                  'quantidaIngresso']

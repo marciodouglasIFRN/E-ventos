@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from django.views.generic import CreateView, ListView, View
 from django.shortcuts import get_object_or_404, render, redirect
+from django.contrib.auth.decorators import login_required, permission_required
 from clientes.form import FormAluno
 from clientes.models import Aluno
 from evento.form import EventoForm
@@ -14,6 +15,11 @@ import io
 import qrcode
 import random
 
+
+def erro_Permissao1(request):
+    return render(request, "evento/sempermissao.html")
+
+@permission_required('ingresso.add_ingresso', login_url='erro_permissao1')
 def solicitarIngressoFuncao(request, id_evento):
     form = IngressoNewEvento(request.POST or None)
     evento = get_object_or_404(Evento, pk=id_evento)
@@ -39,6 +45,8 @@ def solicitarIngressoFuncao(request, id_evento):
     #if int(quanti) > 0:
     #   return render(request, 'ingresso_form_funcao.html', {'formEvento': formEvento, 'chaveForm': chave})
 
+
+@permission_required('ingresso.delete_ingresso', login_url='erro_permissao1')
 def cancelarSolicitacaoFuncao(request, id_ingresso, id_evento):
     ingresso = get_object_or_404(Ingresso, pk=id_ingresso)
     evento = get_object_or_404(Evento, pk=id_evento)

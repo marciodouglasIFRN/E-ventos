@@ -11,7 +11,7 @@
            
             <p>Atração:{{ ingresso.evento.all.get.nomeDaAtracao }}</p>
             <p>Dia:{{ ingresso.evento.all.get.data|date:"SHORT_DATE_FORMAT"}}</p>
-            <p>Hora:{{ ingresso.evento.all.get.data|time:"H:i"}}</p>
+            <p>Hora:{{ ingresso.evento.all.get.hora_evento|time:"H:i"}}</p>
             <a class="btn btn-danger" href="{% url 'cancelar_solicitacao' ingresso.pk ingresso.evento.all.get.pk %}">Cancelar Solicitação</a>
         </li>
         {{ingresso.aluno.all.get.pk}}
