@@ -47,16 +47,20 @@
 </div>
 <div class="row text-center my-4">
     <div class="col">
-      <button class="btn btn-secondary btn-round my-3 my-sm-0 solicitar" type="submit">Categoria1</button>
+      <!--<button class="btn btn-secondary btn-round my-3 my-sm-0 solicitar" type="submit">Show</button>-->
+        <a class="btn btn-secondary btn-round my-3 my-sm-0 solicitar"  href="{% url 'list_evento_por_categoria' 'Show' %}">Show</a>
     </div>
     <div class="col">
-      <button class="btn btn-secondary btn-round my-3 my-sm-0 solicitar" type="submit">Categoria2</button>
+        <!--<button class="btn btn-secondary btn-round my-3 my-sm-0 solicitar" type="submit"></button>-->
+        <a class="btn btn-secondary btn-round my-3 my-sm-0 solicitar"  href="{% url 'list_evento_por_categoria' 'Encontro' %}">Encontro</a>
     </div>
     <div class="col">
-      <button class="btn btn-secondary btn-round my-3 my-sm-0 solicitar" type="submit">Categoria3</button>
+      <!--<button class="btn btn-secondary btn-round my-3 my-sm-0 solicitar" type="submit">Palestra</button>-->
+        <a class="btn btn-secondary btn-round my-3 my-sm-0 solicitar"  href="{% url 'list_evento_por_categoria' 'Palestra' %}">Palestra</a>
     </div>
      <div class="col">
-      <button class="btn btn-secondary btn-round my-3 my-sm-0 solicitar" type="submit">Categoria4</button>
+      <!--<button class="btn btn-secondary btn-round my-3 my-sm-0 solicitar" type="submit">Peça Teatral</button>-->
+         <a class="btn btn-secondary btn-round my-3 my-sm-0 solicitar"  href="{% url 'list_evento_por_categoria' 'Peça Teatral' %}">Peça Teatral</a>
     </div>
 </div>
 <div class="row text-center">

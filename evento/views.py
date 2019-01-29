@@ -63,6 +63,16 @@ class Listar_Eventos_Por_Promotor(ListView):
     template_name_suffix = '_por_promotor'
 
 
+class Listar_Eventos_Por_Categoria(ListView):
+    model = Evento
+
+    def get_queryset(self):
+        return Evento.objects.filter(categoria=self.kwargs['categoria'])
+
+    # template_name_suffix = '_por_promotor'
+
+
+
 class Detalhar_Evento(DetailView):
     model = Evento
 

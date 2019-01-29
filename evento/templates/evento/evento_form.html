@@ -103,7 +103,8 @@
 						<div class="group">
 							<!--<input type="email" class="border-left" required>-->
 							<!--<input type="text" id="id_email" maxlength="50" name="email" class="border-left" value="{{form.email.value}}" required>-->
-							{{form.data}}
+							<input type="date" name="hora_evento" id="id_data">
+							<!--{{form.data}}-->
 							<span class="highlight"></span>
 							<span class="bar"></span>
 							<label for="id_data">Data</label>
@@ -113,10 +114,27 @@
 						<div class="group">
 							<!--<input type="email" class="border-left" required>-->
 							<!--<input type="text" id="id_email" maxlength="50" name="email" class="border-left" value="{{form.email.value}}" required>-->
-							{{form.hora_evento}}
+							<input type="time" name="hora_evento" id="id_hora_evento">
+							<!--{{form.hora_evento}}-->
 							<span class="highlight"></span>
 							<span class="bar"></span>
 							<label for="id_hota_evento">Hora</label>
+						</div>
+					</div>
+					<div class="form-group col-md-4">
+						<div class="group">
+							<div class="form-group">
+							<!--<input type="email" class="border-left" required>-->
+							<!--<input type="text" id="id_email" maxlength="50" name="email" class="border-left" value="{{form.email.value}}" required>-->
+							<label for="sel1"></label>
+							<select class="form-control" id="sel1">
+								<option>--Categoria--</option>
+								<option>Palestra</option>
+								<option>Encontro</option>
+								<option>Show</option>
+								<option>Peça Teatral</option>
+							</select>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -166,4 +184,5 @@
 		<button type="submit" class="btn btn-color btn-round">Cadastrar</button>
 	</form>
 </div>
+
 {% endblock %}

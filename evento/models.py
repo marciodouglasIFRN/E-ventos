@@ -12,6 +12,7 @@ class Evento(models.Model):
     descricao = models.TextField(null=False, blank=False)
     data = models.DateField(null=False, blank=False)
     hora_evento = models.TimeField(null=False, blank=False)
+    categoria = models.CharField(max_length=30, null=True, blank=True)
     foto = models.ImageField(upload_to='eventos_photos', null=True, blank=True)
     cidade = models.CharField(max_length=50, blank=False)
     rua = models.CharField(max_length=30, blank=False)

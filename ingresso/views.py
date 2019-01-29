@@ -28,12 +28,12 @@ def solicitarIngressoFuncao(request, id_evento):
     if form.is_valid() and int(evento.quantidaIngresso) > 0:
         evento.quantidaIngresso = int(evento.quantidaIngresso) - 1
         evento.save()
-        form1 = form.save(commit=False)
         ran1 = random.randint(0, 9999999999999)
-        caminho = 'statics/qrcode/img_'+str(ran1) +'_qrcode.png'
-        form1.caminho = caminho
-        #form.fields= 'ca'
-        form1.save()
+        caminho = 'statics/qrcode/img_' + str(ran1) + '_qrcode.png'
+        # ins = form.save(commit=False)
+        ins = form.save()
+        ins.caminho = caminho
+        ins.save()
         gerarQrCode(evento, caminho)
         #gerarQrCode(evento, form)
         return redirect('page-home')
