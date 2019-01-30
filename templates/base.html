@@ -40,7 +40,7 @@
                 <a class="dropdown-item" href="{% url 'edit_aluno' user.pessoa.aluno.pk %}">Perfil</a>
                 <a class="dropdown-item" href="{% url 'minhas_solicitacoes' %}">Minhas Solicitações</a>
                 {% else %}
-                <a class="dropdown-item" href="{% url 'edit_aluno' user.pessoa.promotoreventos.pk %}">Perfil</a>
+                <a class="dropdown-item" href="{% url 'atulizar_dados_promotor' user.pessoa.promotoreventos.pk %}">Perfil</a>
                 <a class="dropdown-item" href="{% url 'create_evento' %}">Novo Evento</a>
                 <a class="dropdown-item" href="{% url 'list_evento_promotor' user.pessoa.promotoreventos.pk %}">Meus Eventos</a>
                 {% endif %}

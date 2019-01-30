@@ -1,0 +1,12 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block main %}
+<br>
+
+<h1 class="text-center">AUTENTICAÇÃO DE INGRESSO</h1>
+<p>Ingresso: {{ingresso.pk}}</p>
+<p>Aluno: {{aluno.nome}}</p>
+<p>Evento: {{evento.nomeDaAtracao}}</p>
+<img src="{{MEDIA_URL}}{{ingresso.caminho}}">
+<p>Evento: {{evento.nomeDaAtracao}}</p>
+{% endblock%}

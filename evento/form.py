@@ -1,4 +1,7 @@
+from django import forms
 from django.forms import ModelForm
+
+from gerenciamentoevento import settings
 from .models import Evento
 
 
@@ -21,6 +24,10 @@ class EventoForm(ModelForm):
                   'estado', 'complemento', 'quantidaIngresso']
 
 class EventoFormCreate(ModelForm):
+    # data = forms.DateField(
+    #     widget=forms.DateInput(format=('%d-%m-%Y'),
+    #                            attrs={'class': 'myDateClass',
+    #                            'placeholder': 'Select a date'}))
     class Meta:
         model = Evento
         fields = ['promotores', 'nomeDaAtracao', 'descricao', 'data', 'hora_evento', 'foto',

@@ -36,6 +36,9 @@
                     </h4>
                     <p>{{evento.descricao}}</p>
                     <p>Promotor: {{evento.promotores.all.get.nome}}</p>
+                    {% if user.pessoa.promotoreventos %}
+                        <a href="{% url 'editar_evento' evento.pk%}">Editar Evento</a>
+                    {%endif%}
                 </li>
             </a>
             {% endfor %}

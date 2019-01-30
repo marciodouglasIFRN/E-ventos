@@ -1,140 +1,39 @@
-{% extends 'base.html'%}
-
+{% extends 'base.html' %}
+{% load bootstrap %}
 {% block main %}
 <div class="mx-5 p-5">
-    <form method="POST">
-        {%csrf_token%}
-        <div class="row">
-            <div class="col-md-9">
-                <div class="form-row">
-                    <div class="form-group col-md-5">
-                        <div class="group">
-                            {{form.email}}
-                            <span class="highlight"></span>
-                            <span class="bar"></span>
-                            <label for="id_email">Nome:</label>
-                        </div>
-                    </div>
-                    <div class="form-group col-md-5">
-                        <div class="group">
-                            {{form.sobrenome}}
-                            <span class="highlight"></span>
-                            <span class="bar"></span>
-                            <label for="id_sobrenome">Sobrenome:</label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id="img" class="col border border-secondary btn-round text-center pt-4">
-                <i class="fas fa-camera text-secondary" style="font-size: 150px;"></i>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="form-row">
-                    <div class="form-group col-md-4">
-                        <div class="group">
-                            {{form.matricula}}
-                            <span class="highlight"></span>
-                            <span class="bar"></span>
-                            <label for="id_matricula">Nº Matricula:</label>
-                        </div>
-                    </div>
-                    <div class="form-group col-md-4">
-                        <div class="group">
-                            {{form.data_nascimento}}
-                            <span class="highlight"></span>
-                            <span class="bar"></span>
-                            <label for="id_data_nascimento">Data Nascimento:</label>
-                        </div>
-                    </div>
-                    <div class="form-group col-md-4">
-                        <div class="group">
-                            {{form.sexo}}
-                            <span class="highlight"></span>
-                            <span class="bar"></span>
-                            <label for="id_sexo">Sexo:</label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="form-row">
-                    <div class="form-group col-md-4">
-                        <div class="group">
-                            {{form.cpf}}
-                            <span class="highlight"></span>
-                            <span class="bar"></span>
-                            <label for="id_cpf">CPF:</label>
-                        </div>
-                    </div>
-                    <div class="form-group col-md-4">
-                        <div class="group">
-                            {{form.telefone}}
-                            <span class="highlight"></span>
-                            <span class="bar"></span>
-                            <label for="id_telefone">Telefone:</label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <div class="group">
-                            {{form.rua}}
-                            <span class="highlight"></span>
-                            <span class="bar"></span>
-                            <label for="id_rua">Rua:</label>
-                        </div>
-                    </div>
-                    <div class="form-group col-md-2">
-                        <div class="group">
-                            {{form.numero}}
-                            <span class="highlight"></span>
-                            <span class="bar"></span>
-                            <label for="id_numero">Numero</label>
-                        </div>
-                    </div>
-                    <div class="form-group col-md-4">
-                        <div class="group">
-                            {{form.bairro}}
-                            <span class="highlight"></span>
-                            <span class="bar"></span>
-                            <label for="id_bairro">Bairro:</label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="form-row">
-                    <div class="form-group col-md-4">
-                        <div class="group">
-                            {{form.cidade}}
-                            <span class="highlight"></span>
-                            <span class="bar"></span>
-                            <label for="id_cidade">Cidade:</label>
-                        </div>
-                    </div>
-                    <div class="form-group col-md-4">
-                        <div class="group">
-                            {{form.estado}}
-                            <span class="highlight"></span>
-                            <span class="bar"></span>
-                            <label for="id_estado">Estado</label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <button type="submit" class="btn btn-color btn-round">Cadastrar</button>
+	<form method="POST" enctype="multipart/form-data" class="border border-info btn-round p-5">
+		{%csrf_token%}
+		<h1 class="text-center">Cadastro de Promotor</h1>
+		<div class="row">
+			<div class="col-3"></div>
+			<div class="col-6">
+				<div class="form-group">
+					<div class="group">
+					  <!--<input type="email" class="border-left" required>-->
+						<!--<input type="text" id="id_email" maxlength="50" name="email" class="border-left" value="{{form.email.value}}" required>-->
+						{{form.email}}
+					  <span class="highlight"></span>
+					  <span class="bar"></span>
+					  <label for="id_email">Email</label>
+					</div>
+					<div class="group">
+					  <!--<input type="email" class="border-left" required>-->
+						<!--<input type="text" id="id_email" maxlength="50" name="email" class="border-left" value="{{form.email.value}}" required>-->
+						{{form.matricula}}
+					  <span class="highlight"></span>
+					  <span class="bar"></span>
+					  <label for="id_matricula">Matricula</label>
+					</div>
 
-    </form>
+					<button type="submit" class="btn btn-color btn-round">Cadastrar</button>
+
+				</div>
+				<div class="col-3"></div>
+			</div>
+
+		</div>
+	</form>
 </div>
+
 {% endblock %}

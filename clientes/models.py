@@ -35,21 +35,21 @@ class Aluno(Pessoa):
     def __str__(self):
         return "APELIDO: " + "/n" + self.email
 
-    def save(self, *args, **kwargs):
-        super(Aluno, self).save(*args, **kwargs)
-        data = {'pk': self.pk, 'nome': self.nome, 'email': self.email, 'token': token}
-        plain_text = render_to_string('clientes/email/novo_aluno.txt', data)
-        html_email = render_to_string('clientes/email/novo_aluno.html', data)
-        if not self.status:
-            send_mail(
-                'Novo Cliente Cadastrado',
-                #'O seu pre-cadastro %s foi realizado' % self.first_name,
-                plain_text,
-                from_email= "KAKAK",
-                recipient_list=[self.email],
-                html_message=html_email,
-                fail_silently=False,
-            )
+    # def save(self, *args, **kwargs):
+    #     super(Aluno, self).save(*args, **kwargs)
+    #     data = {'pk': self.pk, 'nome': self.nome, 'email': self.email, 'token': token}
+    #     plain_text = render_to_string('clientes/email/novo_aluno.txt', data)
+    #     html_email = render_to_string('clientes/email/novo_aluno.html', data)
+    #     if not self.status:
+    #         send_mail(
+    #             'Novo Cliente Cadastrado',
+    #             #'O seu pre-cadastro %s foi realizado' % self.first_name,
+    #             plain_text,
+    #             from_email= "KAKAK",
+    #             recipient_list=[self.email],
+    #             html_message=html_email,
+    #             fail_silently=False,
+    #         )
 
         # if self.status==False:
         #     send_mail(

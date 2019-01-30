@@ -89,7 +89,7 @@ class Atualizar_Evento(LoginRequiredMixin, UpdateView):
             # return HttpResponse("Acesso Negado, VOCÊ PRECISA DE PERMISSÃO")
             return render(request, "evento/sempermissao.html")
 
-        return super(Cria_Evento, self).dispatch(request, *args, **kwargs)
+        return super(Atualizar_Evento, self).dispatch(request, *args, **kwargs)
 
     model = Evento
     form_class = EventoFormUpdate

@@ -3,19 +3,18 @@
 {% block main %}
 
 <h1>Minhas Solicitações</h1>
-<ul>
+<ul class="list-group">
 {% for ingresso in object_list %}
-        <li>
-            <p>Numero do ingresso:{{ ingresso.pk}}  </p>
-            <a class="btn btn-success" href="{% url 'gerar_ingresso'  ingresso.pk %}">Download do Ingresso</a>
-           
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <p>Nº ingresso:{{ ingresso.pk}}</p>
             <p>Atração:{{ ingresso.evento.all.get.nomeDaAtracao }}</p>
             <p>Dia:{{ ingresso.evento.all.get.data|date:"SHORT_DATE_FORMAT"}}</p>
             <p>Hora:{{ ingresso.evento.all.get.hora_evento|time:"H:i"}}</p>
+            <a class="btn btn-success" href="{% url 'gerar_ingresso'  ingresso.pk %}">Download do Ingresso</a>
             <a class="btn btn-danger" href="{% url 'cancelar_solicitacao' ingresso.pk ingresso.evento.all.get.pk %}">Cancelar Solicitação</a>
         </li>
-        <br>
     {% endfor %}
 </ul>
+<br>
 <a class="btn btn-info" href="{% url 'page-home'%}">Voltar</a>
 {% endblock%}
