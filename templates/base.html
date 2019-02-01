@@ -37,15 +37,15 @@
 
             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                 {% if user.pessoa.aluno %}
-                <a class="dropdown-item" href="{% url 'edit_aluno' user.pessoa.aluno.pk %}">Perfil</a>
-                <a class="dropdown-item" href="{% url 'minhas_solicitacoes' %}">Minhas Solicitações</a>
+                <a class="dropdown-item" href="{% url 'edit_aluno' user.pessoa.aluno.pk %}"><i class="fas fa-user-circle"></i> Perfil</a>
+                <a class="dropdown-item" href="{% url 'minhas_solicitacoes' %}"><i class="fas fa-th-list"></i> Minhas Solicitações</a>
                 {% else %}
-                <a class="dropdown-item" href="{% url 'atulizar_dados_promotor' user.pessoa.promotoreventos.pk %}">Perfil</a>
-                <a class="dropdown-item" href="{% url 'create_evento' %}">Novo Evento</a>
-                <a class="dropdown-item" href="{% url 'list_evento_promotor' user.pessoa.promotoreventos.pk %}">Meus Eventos</a>
+                <a class="dropdown-item" href="{% url 'atulizar_dados_promotor' user.pessoa.promotoreventos.pk %}"><i class="fas fa-user-circle"></i> Perfil</a>
+                <a class="dropdown-item" href="{% url 'create_evento' %}"><i class="fas fa-plus-circle"></i> Novo Evento</a>
+                <a class="dropdown-item" href="{% url 'list_evento_promotor' user.pessoa.promotoreventos.pk %}"><i class="fas fa-list-ol"></i> Meus Eventos</a>
                 {% endif %}
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="{% url 'logout'%}">Logout</a>
+                <a class="dropdown-item" href="{% url 'logout'%}"><i class="fas fa-sign-out-alt"></i> Logout</a>
             </div>
         </div>
         <!--ANTES DE COLOCAR O CODIGO DO BOTÃO DROPDOW, ERA O CODIGO A BAIXO -->
@@ -108,6 +108,26 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 <footer class="footer">
     <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-row">
+                    <div class="col-md-4">
+                        <!--<a><i class="fab fa-facebook"></i></a>-->
+                        <!--<a><i class="fab fa-instagram"></i></a>-->
+                        <!--<a><i class="fas fa-envelope"></i></a>-->
+                    </div>
+                    <div class="col-md-4">
+
+                    </div>
+                    <div class="col-md-4">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a class="text-dark" href="#"><span><i class="fab fa-facebook"></i></span></a>
+        <a class="text-dark" href="#"><span><i class="fab fa-instagram"></i></span></a>
+        <a class="text-dark" href="#"><span><i class="fas fa-envelope"></i></span></a>
         <span class="text-muted">Desenvolvimento web com Django 2.x</span>
     </div>
 </footer>

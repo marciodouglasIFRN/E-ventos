@@ -7,3 +7,11 @@
 	background-color: #4c7593;
 	
 }
+
+.fundo-gradiente{
+    background-image: linear-gradient(to right, #79A7A8, #B7D7D8);
+}
+
+.cor_lista{
+    color: #204E5F;
+}

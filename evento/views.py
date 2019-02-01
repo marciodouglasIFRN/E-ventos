@@ -1,5 +1,6 @@
 from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth.mixins import PermissionRequiredMixin, LoginRequiredMixin
+from django.db.models import Q
 from django.http import HttpResponse, response
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404, render, redirect
@@ -69,9 +70,6 @@ class Listar_Eventos_Por_Categoria(ListView):
     def get_queryset(self):
         return Evento.objects.filter(categoria=self.kwargs['categoria'])
 
-    # template_name_suffix = '_por_promotor'
-
-
 
 class Detalhar_Evento(DetailView):
     model = Evento
@@ -81,7 +79,6 @@ class Detalhar_Evento(DetailView):
 
 
 class Atualizar_Evento(LoginRequiredMixin, UpdateView):
-    #COLOCAR A CONDIÇÃO DE PROMOTOR SÓ PODER ALTERAR O SEU
 
     def dispatch(self, request, *args, **kwargs):
         evento = get_object_or_404(Evento, pk=kwargs['pk'])
@@ -91,11 +88,11 @@ class Atualizar_Evento(LoginRequiredMixin, UpdateView):
 
         return super(Atualizar_Evento, self).dispatch(request, *args, **kwargs)
 
+
+    def get_queryset(self):
+        return Evento.objects.filter(Q(pk=self.kwargs['pk']) and Q(promotores=self.request.user.pessoa.promotoreventos.pk))
+        # return Evento.objects.filter(pk=self.kwargs['pk'])
+
     model = Evento
     form_class = EventoFormUpdate
-    # fields = ['promotores', 'nomeDaAtracao', 'descricao',
-    #           'data', 'foto', 'cidade', 'rua', 'bairro', 'numero',
-    #           'estado', 'complemento', 'quantidaIngresso']
     template_name_suffix = '_update_form'
-
-

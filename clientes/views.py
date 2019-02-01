@@ -1,4 +1,5 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.db.models import Q
 from django.shortcuts import render, redirect, get_object_or_404
 # from .forms import AlunoForm
 from django.urls import reverse_lazy
@@ -43,9 +44,14 @@ class AlunoEdit(LoginRequiredMixin, UpdateView):
     #     return reverse_lazy('edit_aluno', args=[self.object.id])
     template_name_suffix = '_update_form'
 
+    def get_queryset(self):
+        return Aluno.objects.filter(Q(pk=self.kwargs['pk']) and Q(pk=self.request.user.pessoa.pk))
+
 class AtivarConta(UpdateView):
     model = Aluno
     form_class = FormAlunoUpdate
+
+
     def get_queryset(self):
         return Aluno.objects.filter(pk=self.kwargs['pk'])
 

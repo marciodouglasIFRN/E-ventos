@@ -2,9 +2,9 @@ import random
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
+from django.db.models import Q
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import CreateView, ListView, UpdateView
-
 from promotor.form import PromoterEventoFormUpdate
 from .models import PromotorEventos
 from .form import PromoterEventoForm
@@ -47,7 +47,8 @@ class AtualizarDadosPromotor(LoginRequiredMixin,UpdateView):
     template_name_suffix = '_update_form'
 
     def get_queryset(self):
-        return PromotorEventos.objects.filter(pk=self.kwargs['pk'])
+        # return PromotorEventos.objects.filter(pk=self.kwargs['pk'])
+        return PromotorEventos.objects.filter(Q(pk=self.kwargs['pk']) and Q(pk=self.request.user.pessoa.pk))
 
 
 

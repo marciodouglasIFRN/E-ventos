@@ -2,19 +2,38 @@
 
 {% block main %}
 
-<h1>Minhas Solicitações</h1>
-<ul class="list-group">
+<h1 class="text-center">Minhas Solicitações</h1>
+<div class="row">
 {% for ingresso in object_list %}
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-            <p>Nº ingresso:{{ ingresso.pk}}</p>
-            <p>Atração:{{ ingresso.evento.all.get.nomeDaAtracao }}</p>
-            <p>Dia:{{ ingresso.evento.all.get.data|date:"SHORT_DATE_FORMAT"}}</p>
-            <p>Hora:{{ ingresso.evento.all.get.hora_evento|time:"H:i"}}</p>
-            <a class="btn btn-success" href="{% url 'gerar_ingresso'  ingresso.pk %}">Download do Ingresso</a>
-            <a class="btn btn-danger" href="{% url 'cancelar_solicitacao' ingresso.pk ingresso.evento.all.get.pk %}">Cancelar Solicitação</a>
-        </li>
+    <div class="col-md-12 rounded border p-3 m-2 fundo-gradiente">
+        <div class="form-row">
+            <!--FOTO-->
+            <div class="col-md-4 text-center ">
+                <a class="rounded" href="{% url 'detalhar_evento' ingresso.evento.all.get.pk %}"><img src="{{MEDIA_URL}}{{ingresso.evento.all.get.foto.url}}" style="width:200px; height:150px"></a>
+            </div>
+            <!--DADOS DO EVENTO-->
+            <div class="col-md-4 ">
+                <p class="cor_lista">Nº ingresso:{{ ingresso.pk}}</p>
+                <p class="cor_lista">Atração:{{ ingresso.evento.all.get.nomeDaAtracao }}</p>
+                <p class="cor_lista">Dia:{{ ingresso.evento.all.get.data|date:"SHORT_DATE_FORMAT"}}</p>
+                <p class="cor_lista">Hora:{{ ingresso.evento.all.get.hora_evento|time:"H:i"}}</p>
+            </div>
+            <!--DOWNLOAD DO INGRESSO E CANCELAR-->
+            <div class="col-md-4 text-center" >
+                <!--<p><a class="btn btn-success" href="{% url 'gerar_ingresso'  ingresso.pk %}">Download do Ingresso</a></p>-->
+                <p>Dowload Ingresso <a class="" href="{% url 'gerar_ingresso'  ingresso.pk %}"><button class="btn btn-dark"><i class="fas fa-file-download text-light"></i></button></a></p>
+                <p>Enviar Para E-mail <a class="" href=""><button class="btn btn-info "><i class="fas fa-envelope text-light"></i></button></a></p>
+                <!--<p><a class="btn btn-danger" href="{% url 'cancelar_solicitacao' ingresso.pk ingresso.evento.all.get.pk %}">Cancelar Solicitação</a></p>-->
+                <p>Cancelar Ingresso <a class="" href="{% url 'cancelar_solicitacao' ingresso.pk ingresso.evento.all.get.pk %}"><button class="btn btn-danger"><i class="fas fa-trash-alt text-light"></i></button></a></p>
+
+            </div>
+        </div>
+    </div>
     {% endfor %}
-</ul>
+</div>
 <br>
+
+
+
 <a class="btn btn-info" href="{% url 'page-home'%}">Voltar</a>
 {% endblock%}

@@ -37,7 +37,8 @@
                     <p>{{evento.descricao}}</p>
                     <p>Promotor: {{evento.promotores.all.get.nome}}</p>
                     {% if user.pessoa.promotoreventos %}
-                        <a href="{% url 'editar_evento' evento.pk%}">Editar Evento</a>
+                    <p><a href="{% url 'editar_evento' evento.pk%}"><i class="fas fa-edit"></i> Editar Evento</a></p>
+                    <p><a href="{% url 'editar_evento' evento.pk%}"><i class="fas fa-ban"></i> Cancelar Evento</a></p>
                     {%endif%}
                 </li>
             </a>
@@ -55,18 +56,18 @@
             </div>
             
             <div class=" mt-4">
-                <h3>ENDEREÇO</h3>
+                <h3><i class="fas fa-map-marker-alt"></i> ENDEREÇO</h3>
                 <p>{{object_list.0.promotores.all.get.rua}},
                     {{object_list.0.promotores.all.get.numero}},
                     {{object_list.0.promotores.all.get.bairro}},
                     {{object_list.0.promotores.all.get.cidade}}/{{object_list.0.promotores.all.get.estado}}</p>
             </div>
             <div class="mt-4">
-                <h3>Email</h3>
+                <h3><i class="fas fa-envelope"></i> Email</h3>
                 <p>{{object_list.0.promotores.all.get.email}}</p>
             </div>
             <div class=" mt-4">
-                <h3>Telefone</h3>
+                <h3><i class="fas fa-phone"></i> Telefone</h3>
                 <p>{{object_list.0.promotores.all.get.telefone}}</p>
             </div>
         </div>
