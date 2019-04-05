@@ -25,7 +25,7 @@ SECRET_KEY = '@7#_(cpavm_d2$ima0qqmk0$9xf0nn(s8in(=9tcw8t9ys@f$o'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.1.106']
+ALLOWED_HOSTS = ['192.168.1.106', '10.0.0.117']
 
 
 # Application definition
