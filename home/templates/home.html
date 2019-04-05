@@ -12,9 +12,9 @@
   <div class="carousel-inner">
 
     <div class="carousel-item active">
-      <a href="{% url 'detalhar_evento' formEvento.1.pk %}">
+      <a href="{% url 'detalhar_evento' formEvento.0.pk %}">
       	<!--<img src="{% static '/imgs/img.png' %}" class="d-block w-100" alt="Fist slide">-->
-      	<img src="{{MEDIA_URL}}{{formEvento.1.foto.url}}" style="width:1100px; height:419px" alt="Fist slide">
+      	<img src="{{MEDIA_URL}}{{formEvento.0.foto.url}}" style="width:1100px; height:419px" alt="Fist slide">
       </a>
     </div>
       {% for evento in formEvento %}
@@ -88,7 +88,7 @@
       <a href="{% url 'page-about' %}">
         <!--<img src="{% static 'imgs/img1.png' %}" alt="..." class="grow img-thumbnail">-->
       </a>
-    </div> 
+    </div>
      <div class="col mx-1 mb-3 text-white">
       <a href="{% url 'page-about' %}">
         <!--<img src="{% static 'imgs/img1.png' %}" alt="..." class="grow img-thumbnail">-->

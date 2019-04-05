@@ -25,7 +25,7 @@ SECRET_KEY = '@7#_(cpavm_d2$ima0qqmk0$9xf0nn(s8in(=9tcw8t9ys@f$o'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['192.168.1.106']
 
 
 # Application definition
@@ -157,4 +157,3 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_PASSWORD = 'evento1234' #my gmail password
 EMAIL_HOST_USER = 'projetoevento1@gmail.com' #my gmail username
 EMAIL_PORT = 587
-
